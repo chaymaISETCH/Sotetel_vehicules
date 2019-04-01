@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+<style>
+.image{
+     background-image:url("tem.jpg");
+     background-size:cover;
+      
+    
+ }
+ 
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+<f:view>
+				<p:outputLabel value="Login"  style="  font-size: larger;color: white;margin-top: 15px;margin-left:20px;"></p:outputLabel>
+				<p:inputText value="#{mBEmp.e.login}" style="margin-left:20px;margin-right:20px"></p:inputText>
+				
+				<p:outputLabel value="Adresse"  style="  font-size: larger;color: white;margin-top: 15px;margin-left:20px;"></p:outputLabel>
+				<p:inputText value="#{mBEmp.e.adresse}" style="margin-left:20px;margin-right:20px"></p:inputText>
+        
+        		<p:outputLabel value="CIN"  style="  font-size: larger;color: white;margin-top: 15px;margin-left:20px;"></p:outputLabel>
+				<p:inputText value="#{mBEmp.e.cin}" style="margin-left:20px;margin-right:20px"></p:inputText>
+        
+        		<p:outputLabel value="E-mail"  style="  font-size: larger;color: white;margin-top: 15px;margin-left:20px;"></p:outputLabel>
+				<p:inputText value="#{mBEmp.e.email}" style="margin-left:20px;margin-right:20px"></p:inputText>
+        
+        		<p:outputLabel value="Fonction"  style="  font-size: larger;color: white;margin-top: 15px;margin-left:20px;"></p:outputLabel>
+				<p:inputText value="#{mBEmp.e.fonction}" style="margin-left:20px;margin-right:20px"></p:inputText>
+        
+        		<p:outputLabel value="Nom"  style="  font-size: larger;color: white;margin-top: 15px;margin-left:20px;"></p:outputLabel>
+				<p:inputText value="#{mBEmp.e.nom}" style="margin-left:20px;margin-right:20px"></p:inputText>
+        
+        		<p:outputLabel value="Password"  style="  font-size: larger;color: white;margin-top: 15px;margin-left:20px;"></p:outputLabel>
+				<p:inputText value="#{mBEmp.e.password}" style="margin-left:20px;margin-right:20px"></p:inputText>
+        
+        		<p:outputLabel value="Penom"  style="  font-size: larger;color: white;margin-top: 15px;margin-left:20px;"></p:outputLabel>
+				<p:inputText value="#{mBEmp.e.prenom}" style="margin-left:20px;margin-right:20px"></p:inputText>
+        
+        		<p:outputLabel value="Tel"  style="  font-size: larger;color: white;margin-top: 15px;margin-left:20px;"></p:outputLabel>
+				<p:inputText value="#{mBEmp.e.tel}" style="margin-left:20px;margin-right:20px"></p:inputText>
+        
+        <p:commandButton style="
+        
+ 
+ "
+    action="#{mBEmp.cc}"
+     value="create" >
+     
+				</p:commandButton>
+
+
+
+      <p:commandButton style="
+ 
+ "
+    action="#{mBEmp.cc}"
+     value="create" >
+     
+				</p:commandButton>
+
+</f:view>
+
+</h:body>
+</html>

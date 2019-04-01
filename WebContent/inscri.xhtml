@@ -1,0 +1,139 @@
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+.image{
+     background-image:url(car.jpg);
+     background-size:cover;
+      
+    
+ }
+ 
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  ******************************************************************************************* -->
+<f:view>
+		<h:form id="ajoutArticle" style=" margin: auto;
+    width: 80%;
+    margin-top: 5%;
+
+    padding: 10px;">
+
+			<h:panelGrid  cellpadding="10" style="background-color:rgba(255, 255,255,0.5); box-shadow:5px 5px rgba(0,0,0,0.5); border: 0.5px solid white;
+    border-radius: 20px 20px;">
+   <center> <h:graphicImage value="s.png" width="250px"> </h:graphicImage>
+			</center>
+
+        
+				<p:inputText 
+				placeholder="Login" 
+				id="Login" required="true"
+				requiredMessage="ok"
+				 style="margin-top:20px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBEmp.e.login}" ></p:inputText>
+				<p:message for="Login" />
+				<p:inputText 
+				requiredMessage="ok"
+				placeholder="Adresse"
+				id="Adresse" required="true"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				value="#{mBEmp.e.adresse}" ></p:inputText>
+        				<p:message for="Adresse" />
+        
+				<p:inputText requiredMessage="ok"
+				placeholder="CIN" id="CIN" required="true" style="margin-top:20px;margin-left:20px;margin-right:20px"
+				value="#{mBEmp.e.cin}"></p:inputText>
+								<p:message for="CIN" />
+				
+        
+				<p:inputText requiredMessage="ok"
+				placeholder="Email"   id="Email" required="true" style="margin-top:20px;margin-left:20px;margin-right:20px"
+				value="#{mBEmp.e.email}"></p:inputText>
+        								<p:message for="Email" />
+        
+				<p:inputText requiredMessage="ok"
+				placeholder="Fonction" id="Fonction" required="true" style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBEmp.e.fonction}"></p:inputText>
+        								<p:message for="Fonction" />
+        
+				<p:inputText requiredMessage="ok"
+				id="Nom" required="true"
+				placeholder="Nom"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBEmp.e.nom}" ></p:inputText>
+        								<p:message for="Nom" />
+        
+				<p:inputText requiredMessage="ok"
+				id="Password" required="true"
+				placeholder="Mot de passe"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBEmp.e.password}"></p:inputText>
+        								<p:message for="Password" />
+        
+				<p:inputText requiredMessage="ok"
+				id="Prenom" required="true"
+				placeholder="Prenom"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBEmp.e.prenom}" ></p:inputText>
+				 								<p:message for="Prenom" />
+				 
+        
+				<p:inputText requiredMessage="ok"
+				id="Telephone" required="true"
+				placeholder="Telephone"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBEmp.e.tel}" ></p:inputText>
+    
+    			 								<p:message for="Telephone" />
+    			 
+				<p:commandButton style="
+    margin-top: 10%;
+  margin-bottom:20px;
+width:100%  ; 
+
+    margin-right: auto;
+    
+background-color: transparent;border-style:outset ; height: 60px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+      action="#{mBEmp.ajout}"
+     value="VALIDER"
+     update="ajoutArticle"  >
+				</p:commandButton>
+		<p:commandButton style="
+    margin-top: 10%;
+  margin-bottom:20px;
+width:100%  ; 
+
+    margin-right: auto;
+    
+background-color: transparent;border-style:outset ; height: 60px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+      action="#{mBEmp.ajout}"
+     value="VALIDER"
+     update="ajoutArticle"  >
+				</p:commandButton>
+            <p:commandButton value="Reset Tag" update="ajoutArticle" process="@this" style="margin-right:20px;" >
+                <p:resetInput target="ajoutArticle" />
+            </p:commandButton>    
+       </h:panelGrid>
+		
+		</h:form>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

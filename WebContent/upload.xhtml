@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+
+
+#form\3A display.ui-panelgrid td {
+    padding: 0;
+}
+.image{
+    
+     background-size:cover;
+       background-image: url(car.jpg);
+    
+ }
+ 
+ .img{
+ 
+    
+    background-image: url(menu.ico);
+      
+    
+ }
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  *************************************************************************************** -->
+<f:view>
+
+
+
+
+
+
+
+<h:form>
+    <p:fileUpload value="#{uploadImageVehicule.i2}" fileUploadListener="#{uploadImageVehicule.file}"  enctype="multipart/form-data" mode="advanced" dragDropSupport="true"
+           update="messages" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+ 
+    <p:growl id="messages" showDetail="true" />
+</h:form>
+
+
+
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

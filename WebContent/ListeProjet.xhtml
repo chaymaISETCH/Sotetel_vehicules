@@ -1,0 +1,401 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+
+
+
+.image{
+     background-image:url(projet.PNG);
+     background-size:cover;
+      
+    
+ }
+ 
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  *************************************************************************************** -->
+<f:view>
+		<h:form id="ajoutArticle" style=" margin: auto;
+    width: 80%;
+    margin-top: 5%;
+
+    padding: 10px;">
+		
+					
+					
+					
+					<h:form id="form"><center>
+					
+					
+					
+    <p:dataTable value="#{mBMiss.project2}" selectionMode="single" selection="#{mBMiss.mp}" rowKey="#{pr.num}"  expandableRowGroups="true"  var="pr" itemStyle="text-align:center" responsive="true" sortBy="#{pr.code}">
+         <p:ajax event="rowSelect" listener="#{mBMiss.onRowSelect}" update=":form" />
+        <p:ajax event="rowUnselect" listener="#{mBMiss.onRowUnselect}" update=":form" />
+        
+             <p:headerRow>
+            <p:column>
+                 <h:outputText value="Projet : " />
+                <h:outputText value="#{pr.code}" />
+            </p:column>
+              <p:column>
+                <h:outputText value="#{pr.projet.lib}" />
+            </p:column>
+              <p:column>
+                <h:outputText value="#{pr.projet.dateDeb}" />
+            </p:column> 
+         <p:column>
+                <h:outputText value="#{pr.projet.duree}" />
+            </p:column>
+            
+                     <p:column headerText="Ajout Mission">
+            
+          <p:commandButton icon="ui-icon-plus" oncomplete="PF('carDialog2').show();" label="ajout Mission" alt="ajout Mission">
+          <f:setPropertyActionListener value="#{pr.code}" target="#{mBMiss.code}" />  
+          </p:commandButton>  
+            </p:column>
+        </p:headerRow>    
+                 
+        		<p:column headerText="Numéro"  style="width:10%">
+        				     <h:outputText value="Mission : " />
+        		
+		     <h:outputText value="#{pr.num}" />
+				</p:column>		
+				
+					
+   	<p:column headerText="Mission"  style="width:10%">
+            <h:outputText value="#{pr.des}" />
+				</p:column>	
+ 		<p:column headerText="Date Début"  style="width:10%">
+		     <h:outputText value="#{pr.dateDeb}" />
+				</p:column>	
+    <p:column headerText="Durée"  style="width:10%">
+		     <h:outputText value="#{pr.duree}" />
+				</p:column>	
+				
+
+
+
+			<p:column headerText="Ajout Mission" style="width:10%">
+				
+ 			 
+		 <p:commandButton update=":form2"  icon="ui-icon-pencil" oncomplete="PF('carDialog33').show();">      
+		    <f:setPropertyActionListener value="#{pr}" target="#{mBMiss.miss2}" />             
+                </p:commandButton>
+				 
+   <p:commandButton icon="ui-icon-trash" title="Supprimer" action="#{mBMiss.suppri(pr.num)}">
+        <p:confirm header="Confirmation" message="voulez vous vraimenet supprimer" icon="ui-icon-alert" />
+        
+    </p:commandButton>
+
+ 
+			</p:column>	
+
+    </p:dataTable>
+    		</center>	
+<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+<center>
+        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        
+        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </center></p:confirmDialog>   
+</h:form>
+</h:form>
+	<center>
+	<h:form id="form">
+	<div >
+    <p:dataList value="#{mBMiss.mp.personnels}" var="car" type="ordered" style="width:30%;float: left;
+ margin-left:18%;
+ margin-right:2%;
+  display: inline;">    
+        <f:facet name="header">
+            Intervenants
+        </f:facet>
+        #{car.prenom} #{car.nom}
+             <f:facet name="footer">
+		 <p:commandButton icon="ui-icon-pencil" >      
+		             
+                </p:commandButton>
+				
+        </f:facet>
+    </p:dataList>	
+    </div><div>
+		   <p:dataList value="#{mBMiss.mp.affectations}" var="car" type="ordered" style="width:30%;  float: left;
+    
+  display: inline;">
+        <f:facet name="header">
+           Véhicules
+        </f:facet>
+        Matricule :  #{car.vehicule.matricule}<br/>Date : #{car.id.date}<br/>Duree : #{car.duree}Jours
+        
+             <f:facet name="footer">
+		 <p:commandButton icon="ui-icon-pencil"  onclick="PF('carDialog2').show();" >      
+		             
+                </p:commandButton>
+				
+        </f:facet>
+    </p:dataList>	
+		</div>
+		
+		
+		
+		 <p:dialog header="Mission" widgetVar="carDialog2" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		<h:form id="ajoutService">
+
+			<h:panelGrid columns="3">
+  
+
+        		  <p:outputLabel value="Mission"></p:outputLabel>	           
+				<p:inputText 
+				placeholder="Mission" 
+				id="mission" required="true"
+				requiredMessage="veuillez remplir ce champ"
+				 style="margin-top:5px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBMiss.miss.des}" ></p:inputText>
+				<p:message for="mission" />
+				
+				
+				
+						  <p:outputLabel value="Date"></p:outputLabel>
+		
+		
+			  <p:calendar  requiredMessage="veuillez remplir ce champ"
+				id="v9" required="true"
+				  style="margin-top:50px;padding-top:50px;margin-bottom:20px;margin-left:8%;margin-right:20px"
+				 value="#{mBMiss.miss.dateDeb}" placeholder="Date"  pattern="dd-MM-yyyy" mask="true" />
+				
+												<p:message for="v9" display="text"/>
+		
+				
+				  <p:outputLabel value="Duree"></p:outputLabel>
+				           
+				<p:inputNumber 
+				placeholder="Duree" 
+				id="duree" required="true"
+				requiredMessage="veuillez remplir ce champ"
+				 style="margin-top:5px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBMiss.miss.duree}" ></p:inputNumber>
+				<p:message for="duree" />
+				  
+			
+        		   <h:outputLabel for="multiple" value="Véhicules" />
+        <p:selectCheckboxMenu id="Véhicules" value="#{mBMiss.lMat}" label="Véhicules" multiple="true"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+            <f:selectItems value="#{mBVehicule.lMat}" />
+        </p:selectCheckboxMenu>
+        <p:message for="Véhicules" />
+        
+        	   <h:outputLabel for="multiple" value="Employés" />
+        <p:selectCheckboxMenu id="employes" value="#{mBMiss.miss.personnels}" label="Véhicules" multiple="true"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+            <f:selectItems value="#{mBEmp.lMat}" />
+        </p:selectCheckboxMenu>
+          <p:message for="employes" />
+        
+        					
+			<h:panelGrid columns="2">				<p:commandButton style="
+
+  
+width:100%  ; 
+
+
+    
+background-color: transparent;border-style:outset ;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;height:40px;"
+      action="#{mBMiss.ajout}"
+     value="VALIDER"
+       >
+				</p:commandButton>
+						<p:commandButton style="width:100%;
+background-color: transparent;border-style:outset ; height: 40px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+   
+ value="ANNULER" process="@this" >
+                <p:resetInput target="ajoutArticle" />
+            </p:commandButton>  
+            </h:panelGrid>  
+            
+       </h:panelGrid>
+		</h:form>
+	
+    </p:dialog>  
+		
+<!-- *****************************************************************  -->		
+		
+		
+		<!-- *************************************************************************** -->
+		
+		
+		
+		 <p:dialog header="Intervenants" widgetVar="carDialog3" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		<h:form id="ajoutService2">
+
+			<h:panelGrid  >
+  
+
+        		   <h:outputLabel for="multiple" value="Véhicules" />
+        <p:selectCheckboxMenu id="Véhicules" value="#{mBService.lMat}" label="Véhicules" multiple="true"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+            <f:selectItems value="#{mBVehicule.lMat}" />
+        </p:selectCheckboxMenu>
+        
+        
+        
+        					
+			<h:panelGrid columns="2">				<p:commandButton style="
+
+  
+width:100%  ; 
+
+
+    
+background-color: transparent;border-style:outset ;font-family: 
+    fantasy;font-size: 10px;font-weight:bold;"
+      action="#{mBService.ajout}"
+     value="VALIDER"
+     >
+				</p:commandButton>
+						<p:commandButton style="width:100%;
+background-color: transparent;border-style:outset ; height: 40px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+ value="ANNULER"   process="@this" >
+                <p:resetInput target="ajoutArticle" />
+            </p:commandButton>  
+            </h:panelGrid>  
+            
+       </h:panelGrid>
+		</h:form>
+	
+    </p:dialog>  
+		
+		
+		
+		
+		
+    </h:form>	
+    
+ </center>	
+    
+ <!-- ************************************************************************************ -->
+				
+		
+	<h:form id="form2">
+	
+	 <p:dialog header="Mission" widgetVar="carDialog33" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		<h:form id="modmission">
+
+			<h:panelGrid columns="3">
+  
+
+        		  <p:outputLabel value="Mission"></p:outputLabel>	           
+				<p:inputText 
+				placeholder="Mission" 
+				id="mission1" required="true"
+				requiredMessage="veuillez remplir ce champ"
+				 style="margin-top:5px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBMiss.miss2.des}" ></p:inputText>
+				<p:message for="mission1" />
+				
+				
+				
+						  <p:outputLabel value="Date"></p:outputLabel>
+		
+		
+			  <p:calendar  requiredMessage="veuillez remplir ce champ"
+				id="v91" required="true"
+				  style="margin-top:50px;padding-top:50px;margin-bottom:20px;margin-left:8%;margin-right:20px"
+				 value="#{mBMiss.miss2.dateDeb}" placeholder="Date"  pattern="dd-MM-yyyy" mask="true" />
+				
+												<p:message for="v91" display="text"/>
+		
+				
+				  <p:outputLabel value="Duree"></p:outputLabel>
+				           
+				<p:inputNumber 
+				placeholder="Duree" 
+				id="duree1" required="true"
+				requiredMessage="veuillez remplir ce champ"
+				 style="margin-top:5px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBMiss.miss2.duree}" ></p:inputNumber>
+				<p:message for="duree1" />
+				  
+			
+        		   <h:outputLabel for="multiple" value="Véhicules" />
+        <p:selectCheckboxMenu id="Véhicules1" value="#{mBMiss.lMat}" label="Véhicules" multiple="true"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+            <f:selectItems value="#{mBVehicule.lMat}" />
+        </p:selectCheckboxMenu>
+        <p:message for="Véhicules1" />
+        
+        	   <h:outputLabel for="multiple" value="Employés" />
+        <p:selectCheckboxMenu id="employes1" value="#{mBMiss.lEmp}" label="Véhicules" multiple="true"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+            <f:selectItems value="#{mBEmp.lMat}" />
+        </p:selectCheckboxMenu>
+          <p:message for="employes1" />
+        
+        					
+			<h:panelGrid columns="2">				<p:commandButton style="
+
+  
+width:100%  ; 
+
+
+    
+background-color: transparent;border-style:outset ;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;height:40px;"
+      action="#{mBMiss.edit}"
+     value="VALIDER"
+       >
+				</p:commandButton>
+						<p:commandButton style="width:100%;
+background-color: transparent;border-style:outset ; height: 40px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+ value="ANNULER" process="@this" >
+                <p:resetInput target="ajoutArticle" />
+            </p:commandButton>  
+            </h:panelGrid>  
+            
+       </h:panelGrid>
+		</h:form>
+	
+    </p:dialog>  
+		
+		
+		
+		
+	
+	
+	
+	
+	</h:form>	
+		
+
+    
+	
+		
+		
+</f:view>
+
+
+
+
+
+</h:body>
+</html>

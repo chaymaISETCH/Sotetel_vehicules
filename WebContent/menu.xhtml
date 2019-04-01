@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+
+
+#form\3A display.ui-panelgrid td {
+    padding: 0;
+}
+.image{
+    
+     background-size:cover;
+       background-image: url(back.jpg);
+    
+ }
+ 
+ .img{
+ 
+    
+    background-image: url(menu.ico);
+      
+    
+ }
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  *************************************************************************************** -->
+<f:view>
+
+
+
+<h:form id="form" style="width:120%; height:15%;margin:-10px;background-color:rgba(255, 255,255,0.5);">
+ 
+ <h:panelGrid style="height:103%;" columns="2">
+ 	<p:graphicImage id="img" value="s.png"  style="height:25%;" >
+						
+					</p:graphicImage>
+<p:commandButton value="HOME" 
+style="height:100%;margin-left:200px; background:none;border:none;color:white !important;background-size:cover;border-radius: 0px;" >
+
+</p:commandButton>
+
+</h:panelGrid>
+
+
+ </h:form>
+
+
+
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

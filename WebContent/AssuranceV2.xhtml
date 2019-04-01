@@ -1,0 +1,336 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+<style>
+
+
+#form\3A display.ui-panelgrid td {
+    padding: 0;
+}
+.image{
+    
+     background-size:cover;
+       background-image: url(car.jpg);
+    
+ }
+ 
+ .img{
+ 
+    
+    background-image: url(menu.ico);
+      
+    
+ }
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body>
+
+
+<!--  *************************************************************************************** -->
+
+   <p:sidebar widgetVar="sidebar1" baseZIndex="10000" style="width:20%;">
+    <center>    <p:graphicImage value="self.png"  style="width:100px;height:100px; margin-top:20px;" >
+					</p:graphicImage>
+        <h3 style="font-weight:normal;margin-bottom:20px;">Nom Prenom</h3>
+    </center>
+    
+    
+    
+    <h:form>    
+ 
+    <p:panelMenu style="border:none !important;background:none !important;width:230px;" >
+        <p:submenu label="Vehicules" expanded="true">
+             <p:menuitem value="Ajout Vehicule"  icon="ui-icon-disk" />
+            <p:menuitem value="Liste Vehicule"   icon="ui-icon-arrowrefresh-1-w" />
+        </p:submenu>
+                </p:panelMenu>
+            <p:menu style="text-align:center">
+            <p:menuitem value="Visite Technique"   icon="ui-icon-arrowrefresh-1-w"/>
+         
+            
+             <p:menuitem value="Maintenance"   icon="ui-icon-arrowrefresh-1-w"/>
+             <p:menuitem value="Assurance"   icon="ui-icon-arrowrefresh-1-w"/>
+             <p:menuitem value="Carte Carburant"  icon="ui-icon-arrowrefresh-1-w"/>
+              <p:menuitem value="Projets"    icon="ui-icon-arrowrefresh-1-w"/>
+               <p:menuitem value="Employes"  icon="ui-icon-arrowrefresh-1-w"/>
+               <p:separator></p:separator>
+                 <p:menuitem value="Statistique" icon="ui-icon-arrowrefresh-1-w"/>
+              
+                                      <p:menuitem value="Rapport" icon="ui-icon-arrowrefresh-1-w"/>
+                   <p:separator></p:separator>         
+       
+                   <p:separator></p:separator>         
+            <p:menuitem value="Aide"  ajax="false" icon="ui-icon-close"/>
+      
+      
+</p:menu>    </h:form>
+    <p:commandButton value="Annuler" oncomplete="PF('sidebar1').hide()"/>
+</p:sidebar>
+
+
+
+<div style="background-color:#f6f6f6;float:right;width:110%;height:40px;position:fixe;margin-right:0px;margin-top:-100px;">
+
+
+<p:commandButton value="" style="margin-top:5px;border:none;width:30px;margin-left:150px;height:30px; background-color:none;   background-image: url(m.png); background-size: 30px;" oncomplete="PF('sidebar1').show()" >
+
+</p:commandButton>
+
+	<span  style="background-color:#f6f6f6;float:right;margin-top:-10px">	
+
+
+
+<p:commandButton   style="height:50px;width:200px;background-color:transparent !important;border:none;font-family:'Segoe UI',Arial,sans-serif;font-weight:400;margin:0;"     value="Projet"
+     >
+     </p:commandButton>
+	<p:commandButton   style="height:50px;width:150px;background-color:none !important;border:none;font-family:'Segoe UI',Arial,sans-serif;font-weight:400;margin:0;"     value="Contact"
+     >
+     </p:commandButton>	
+ 
+	<p:commandButton   style="height:50px;width:150px;background-color:none !important;border:none;font-family:'Segoe UI',Arial,sans-serif;font-weight:400;margin:0;"     value="Contact"
+     >
+     </p:commandButton>	
+
+
+</span>	
+
+</div>
+
+<f:view style="margin-top:20px">
+<center><h:form>
+    <p:dataTable var="row" style="width:50%;margin-top:200px;"    value="#{mBAssurance.l}" widgetVar="carsTable"
+                 emptyMessage="liste vide" filteredValue="#{mBAssurance.ll}">
+<f:facet name="header">
+
+<div align="left" style="margin-top:10px;">
+<p:outputLabel value="liste des contrats d'assurance" />
+    
+		
+</div>
+
+<div align="right" style="margin-right:20px;margin-top:-30px;">
+
+<p:commandButton onclick="PF('carDialog2').show();" icon="ui-icon-plus" />
+</div>
+
+
+        </f:facet>
+ 
+       <p:column headerText="Numéro">
+       
+              <p:outputLabel value="#{row.num}"></p:outputLabel>
+               
+       </p:column>
+ 
+       <p:column headerText="Date">
+          
+              		<p:outputLabel value="#{row.dateDeb}"></p:outputLabel>
+               
+       </p:column>
+ 
+     
+ 
+ 
+ 
+       <p:column headerText="Date de fin">
+           				<p:outputLabel value="#{row.dateFin}"></p:outputLabel>
+
+       </p:column>
+ 
+   <p:column headerText="Type">
+          	<p:outputLabel value="#{row.type}"></p:outputLabel>
+
+           </p:column>
+    <p:column headerText="Compagnie d'assurance">
+          	<p:outputLabel value="#{row.compagnie.lib}"></p:outputLabel>
+
+</p:column>
+ 
+        <p:column filterBy="#{row.vehicule.matricule}" headerText="Matricule" filterMatchMode="exact" style="width:20%">
+            <f:facet name="filter">
+          
+                
+                 <p:selectOneMenu value="#{mBCarte.mf}" onchange="PF('carsTable').filter()">
+                 
+   <f:selectItems value="#{mBVehicule.lMat}"/>
+   </p:selectOneMenu>
+            </f:facet>
+            <h:outputText value="#{row.vehicule.matricule}" />
+        </p:column>
+ 
+ 			
+	<p:column headerText="Modifier" style="width:10%">
+		 <p:commandButton update=":f"   action="#{mBAssurance.modif2}" icon="ui-icon-pencil" >      
+		    <f:setPropertyActionListener value="#{row}" target="#{mBAssurance.selvisite}" />             
+                </p:commandButton>
+				</p:column>		
+				
+					<p:column headerText="Supprimer" style="width:10%">
+				
+   <p:commandButton icon="ui-icon-trash" title="Supprimer" actionListener="#{mBAssurance.supp(row)}">
+        <p:confirm header="Confirmation" message="voulez vous vraimenet supprimer" icon="ui-icon-alert" />
+        
+    </p:commandButton>
+				</p:column>	
+ 
+ 
+         
+    </p:dataTable>
+</h:form>
+ <h:form id="form" > 
+   
+<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+<center>
+        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        
+        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </center></p:confirmDialog>   
+	
+	</h:form>
+	<h:form id="f">
+   <p:dialog header="Contrat d'assurance" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+  
+    
+ 
+     
+     <p:wizard flowListener="#{mBAssurance.onFlowProcess}">
+        <p:tab id="con" title="Contart d'assurance">
+          
+                <p:messages />
+                <h:panelGrid columns="2" style="margin-top:50px;margin-bottom:50px;" columnClasses="label, value">
+                    <h:outputText value="Numéro de contrat: *" />
+                    <p:inputText style="margin-left:18px;" value="#{mBAssurance.selvisite.num}" requiredMessage="veuillez remplir ce champ" required="true" label="Firstname"/>
+ 
+                    <h:outputText value="Date: *" />
+                    <p:calendar  requiredMessage="veuillez remplir ce champ"
+				 required="true"
+				  style="margin-top:50px;padding-top:50px;margin-bottom:20px;margin-left:8%;margin-right:20px"
+				 value="#{mBAssurance.selvisite.dateDeb}" placeholder="Date"  pattern="dd-MM-yyyy" mask="true" />
+ 
+                    <h:outputText value="Date de fin: *" />
+                            <p:calendar  requiredMessage="veuillez remplir ce champ"
+				required="true"
+				  style="margin-top:50px;padding-top:50px;margin-bottom:20px;margin-left:8%;margin-right:20px"
+				 value="#{mBAssurance.selvisite.dateFin}" placeholder="Date"  pattern="dd-MM-yyyy" mask="true" />
+ 
+                    <h:outputText value="Type: *" />
+                    <p:inputText required="true" style="margin-left:18px;" requiredMessage="veuillez remplir ce champ" 
+                    value="#{mBAssurance.selvisite.type}" />
+                    <h:outputText value="Véhicule: *" />          			           
+			<p:selectOneMenu style="margin-left:8%" required="true" requiredMessage="veuillez remplir ce champ"
+			  id="menu1" value="#{mBAssurance.selvisite.vehicule.matricule}" >
+   <f:selectItems value="#{mBVehicule.lMat}" />
+   </p:selectOneMenu>
+                </h:panelGrid>
+        
+        </p:tab>
+ 
+        <p:tab id="address" title="Compagnie d'assurance">
+           
+                <p:messages />
+                <h:panelGrid columns="2" style="margin-top:50px;margin-bottom:50px;" columnClasses="label, value">
+                    <h:outputText value="Compagnie d'assurance: *" />
+	<p:selectOneMenu style="margin-left:8%" required="true" requiredMessage="veuillez remplir ce champ"
+			  id="menu2" value="#{mBAssurance.selvisite.compagnie.num}" >
+   <f:selectItems  value="#{mBCompagnie.l}" var="row" itemLabel="#{row.lib}" itemValue="#{row.num}" />
+   </p:selectOneMenu>
+   
+      
+    <center><p:commandButton style="
+    margin-top: 10%;
+  margin-bottom:20px;
+
+
+
+    margin-right: auto;
+    
+background-color: transparent;border-style:outset ; height: 60px;font-family: 
+    fantasy;font-size: 15px;font-weight:bold;"
+      action="#{mBAssurance.modif}"
+     value="VALIDER"
+       >
+				</p:commandButton>
+</center> 
+</h:panelGrid></p:tab>
+</p:wizard>
+	
+    </p:dialog>  
+    </h:form>
+    <h:form id="ajoutCarte">
+   <p:dialog header="Carte Carburant" widgetVar="carDialog2" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+			<p:wizard flowListener="#{mBAssurance.onFlowProcess}">
+        <p:tab id="con" title="Contart d'assurance">
+          
+                <p:messages />
+                <h:panelGrid columns="2" style="margin-top:50px;margin-bottom:50px;" columnClasses="label, value">
+                    <h:outputText value="Numéro de contrat: *" />
+                    <p:inputText style="margin-left:18px;" value="#{mBAssurance.visiteDT2.num}" requiredMessage="veuillez remplir ce champ" required="true" label="Firstname"/>
+ 
+                    <h:outputText value="Date: *" />
+                    <p:calendar  requiredMessage="veuillez remplir ce champ"
+				 required="true"
+				  style="margin-top:50px;padding-top:50px;margin-bottom:20px;margin-left:8%;margin-right:20px"
+				 value="#{mBAssurance.visiteDT2.dateDeb}" placeholder="Date"  pattern="dd-MM-yyyy" mask="true" />
+ 
+                    <h:outputText value="Date de fin: *" />
+                            <p:calendar  requiredMessage="veuillez remplir ce champ"
+				required="true"
+				  style="margin-top:50px;padding-top:50px;margin-bottom:20px;margin-left:8%;margin-right:20px"
+				 value="#{mBAssurance.visiteDT2.dateFin}" placeholder="Date"  pattern="dd-MM-yyyy" mask="true" />
+ 
+                    <h:outputText value="Type: *" />
+                    <p:inputText required="true" style="margin-left:18px;" requiredMessage="veuillez remplir ce champ" 
+                    value="#{mBAssurance.visiteDT2.type}" />
+                    <h:outputText value="Véhicule: *" />          			           
+			<p:selectOneMenu style="margin-left:8%" required="true" requiredMessage="veuillez remplir ce champ"
+			  id="menu1" value="#{mBAssurance.m}" >
+   <f:selectItems value="#{mBVehicule.lMat}" />
+   </p:selectOneMenu>
+                </h:panelGrid>
+        
+        </p:tab>
+ 
+        <p:tab id="address" title="Compagnie d'assurance">
+           
+                <p:messages />
+                <h:panelGrid columns="2" style="margin-top:50px;margin-bottom:50px;" columnClasses="label, value">
+                    <h:outputText value="Compagnie d'assurance: *" />
+	<p:selectOneMenu style="margin-left:8%" required="true" requiredMessage="veuillez remplir ce champ"
+			  id="menu2" value="#{mBAssurance.c}" >
+   <f:selectItems  value="#{mBCompagnie.l}" var="row" itemLabel="#{row.lib}" itemValue="#{row.num}" />
+   </p:selectOneMenu>
+   
+   
+    <p:commandButton   action="#{mBAssurance.ajout()}" value="valider" >      
+                </p:commandButton>
+    </h:panelGrid>
+ </p:tab></p:wizard>
+			
+		
+    </p:dialog>  
+    </h:form>
+    
+	
+	
+	
+	
+</center>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

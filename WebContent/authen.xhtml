@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+.image{
+     background-image:url(car.jpg);
+     background-size:cover;
+      
+    
+ }
+ 
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  ******************************************************************************************* -->
+<f:view>
+		<h:form id="ajoutArticle" style=" margin: auto;
+    width: 80%;
+    margin-top: 5%;
+
+    padding: 10px;">
+
+			<h:panelGrid  cellpadding="10" style="background-color:rgba(255, 255,255,0.5); box-shadow:5px 5px rgba(0,0,0,0.5); border: 0.5px solid white;
+    border-radius: 20px 20px;">
+   <center> <h:graphicImage value="s.png" width="250px"> </h:graphicImage>
+			</center>
+				<p:inputText placeholder="User Name"  style="margin-top:20px;margin-left:20px;margin-right:20px"></p:inputText>
+
+				<p:inputText placeholder="Password"   style="margin-top:30px;margin-left:20px;margin-right:20px"/>
+
+
+				 
+				<p:commandButton style="
+    margin-top: 10%;
+  margin-bottom:20px;
+width:100%  ; 
+    margin-right: auto;
+    
+background-color: transparent;border-style:outset ; height: 60px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+    
+     value="LOGIN"  >
+				</p:commandButton>
+		
+
+
+
+
+</h:panelGrid>
+		
+		</h:form>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

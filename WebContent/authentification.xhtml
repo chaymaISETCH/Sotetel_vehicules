@@ -1,0 +1,127 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+
+
+html,
+body {
+  font-size: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+
+}
+
+img {
+  display: none;
+}
+
+
+.image{
+     background-image:url(car.jpg);
+     background-size:cover;
+      
+    
+ }
+ 
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body>
+
+<img src="car5.jpg" style="z-index:0;" />
+   
+ <script src="pfff.js"/>
+<!--  *************************************************************************************** -->
+<f:view>
+		<h:form id="ajoutArticle" style=" margin: auto;
+    width: 80%;
+    margin-top: 5%;
+
+    padding: 10px;position:absolute;">
+
+			<h:panelGrid  cellpadding="10" style="background-color:rgba(255, 255,255,0.5); box-shadow:5px 5px rgba(0,0,0,0.5); border: 0.5px solid white;
+    border-radius: 20px 20px;">
+   <center> <h:graphicImage value="s.png" width="250px"> </h:graphicImage>
+			</center>
+
+        			    <p:scrollPanel mode="native" style="height:180px;margin-top:-30px; overflow:auto;background-color:transparent">
+        
+        
+     
+     
+         
+        
+        
+				<p:inputText 
+				value="#{mBLogin.e.login}" 
+				placeholder="Login" 
+				id="Login" required="true"
+				requiredMessage="veuillez remplir ce champ"
+				 style="margin-top:50px;margin-left:20px;margin-right:20px"
+				 ></p:inputText>
+				<p:message for="Login" display="tooltip"/>
+							<h:panelGrid columns="2">				
+				
+				<p:password requiredMessage="ok"
+				id="Password" required="true"
+				placeholder="Mot de passe"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBLogin.e.motDePasse}" >     <f:validateLength minimum="8" ></f:validateLength></p:password>
+        							                								<p:message for="Password" />
+
+        </h:panelGrid>
+        
+				    			 								</p:scrollPanel>
+			<h:panelGrid columns="2">				<p:commandButton style="
+    margin-top: 10%;
+  margin-bottom:20px;
+width:100%  ; 
+
+    margin-right: auto;
+    
+background-color: transparent;border-style:outset ; height: 60px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+     			action="#{mBLogin.cc}"
+
+     value="VALIDER"
+     update="ajoutArticle"  >
+				</p:commandButton>
+						<p:commandButton style="
+    margin-top: 10%;
+  margin-bottom:20px;
+width:100%  ; 
+    margin-left: 15px;
+
+    margin-right: auto;
+    
+background-color: transparent;border-style:outset ; height: 60px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+ value="ANNULER" update="ajoutArticle" process="@this" >
+                <p:resetInput target="ajoutArticle" />
+            </p:commandButton>  
+            </h:panelGrid>  
+            
+       </h:panelGrid>
+		</h:form>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

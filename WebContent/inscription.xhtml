@@ -1,0 +1,147 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+.image{
+     background-image:url(car.jpg);
+     background-size:cover;
+      
+    
+ }
+ 
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  *************************************************************************************** -->
+<f:view>
+	<center>	<h:form id="ajoutArticle" style=" margin: auto;
+    width: 80%;
+    margin-top: 5%;
+
+    padding: 10px;">
+        <p:growl id="messages2" for="msg"  showDetail="true" />
+    
+<p:tooltip></p:tooltip>
+			<h:panelGrid columns="1"  cellpadding="10" style="background-color:rgba(255, 255,255,0.5); box-shadow:5px 5px rgba(0,0,0,0.5); border: 0.5px solid white;
+    border-radius: 20px 20px;">
+   <center> <h:graphicImage value="s.png" width="250px"> </h:graphicImage>
+			</center>
+
+        			    <p:scrollPanel mode="native" style="height:250px;margin-top:-30px; overflow:auto;background-color:transparent">
+        <h:panelGrid columns="1">
+				<p:inputText 
+				placeholder="Login" 
+				id="Login" required="true"
+				requiredMessage="veuillez remplir ce champ"
+				 style="margin-top:20px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBEmp.e.login}" ></p:inputText>
+				<p:message for="Login" display="tooltip"/>
+				<p:inputText 
+				requiredMessage="veuillez remplir ce champ"
+				placeholder="Adresse"
+				id="Adresse" required="true"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				value="#{mBEmp.e.adresse}" ></p:inputText>
+        				<p:message for="Adresse" display="tooltip"/>
+        
+				<p:inputText requiredMessage="veuillez remplir ce champ"
+				placeholder="CIN" maxlength="8" id="CIN" required="true" style="margin-top:20px;margin-left:20px;margin-right:20px"
+				value="#{mBEmp.e.cin}"><f:validateLength minimum="8" ></f:validateLength></p:inputText>
+								<p:message for="CIN" display="tooltip"/>
+				
+        
+				<p:inputText requiredMessage="votre email n'est pas valide"
+				placeholder="Email"   id="Email" required="true" style="margin-top:20px;margin-left:20px;margin-right:20px"
+				value="#{mBEmp.e.email}">    <f:validateRegex  pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"  />
+</p:inputText>
+        								<p:message  for="Email" display="tooltip" />
+        
+				<p:inputText requiredMessage="veuillez remplir ce champ"
+				placeholder="Fonction" id="Fonction" required="true" style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBEmp.e.fonction}"></p:inputText>
+        								<p:message for="Fonction" display="tooltip"/>
+        
+				<p:inputText requiredMessage="veuillez remplir ce champ"
+				id="Nom" required="true"
+				placeholder="Nom"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBEmp.e.nom}" ></p:inputText>
+        								<p:message for="Nom" display="tooltip"/>
+        								
+        								   	<p:inputText requiredMessage="veuillez remplir ce champ"
+				id="Sexe" required="true"
+				placeholder="Sexe" style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBEmp.e.sexe}" ></p:inputText>
+				 								<p:message for="Sexe" display="tooltip"/>
+        								
+        								
+        	<p:inputText requiredMessage="veuillez remplir ce champ"
+				id="Prenom" required="true"
+				placeholder="Prenom"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBEmp.e.prenom}" ></p:inputText>
+				 								<p:message for="Prenom" display="tooltip"/>
+			
+        <p:password id="pwd1" placeholder="mot de passe"  value="#{mBEmp.e.motDePasse}" match="pwd2" label="mot de passe" required="true" ><f:validateLength minimum="6" ></f:validateLength></p:password>
+ 				         								<p:message for="pwd1" display="tooltip"/>
+ 
+        <p:password id="pwd2" placeholder="mot de passe" value="#{mBEmp.e.motDePasse}" label="mot de passe" required="true" />
+			
+				         								<p:message for="pwd2" display="tooltip"/>
+				 
+        
+				<p:inputText requiredMessage="veuillez remplir ce champ"
+				id="Telephone" required="true"
+				placeholder="Telephone"  style="margin-top:20px;margin-bottom:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBEmp.e.tel}" ><f:validateLength minimum="8" ></f:validateLength></p:inputText>
+    
+    			 								<p:message for="Telephone" display="tooltip"/>
+    			 						 </h:panelGrid>		</p:scrollPanel>
+			<h:panelGrid columns="2">				<p:commandButton style="
+    margin-top: 10%;
+  margin-bottom:20px;
+width:100%  ; 
+
+    margin-right: auto;
+    
+background-color: transparent;border-style:outset ; height: 60px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+      action="#{mBEmp.ajout}"
+     value="VALIDER"
+     update="ajoutArticle"  >
+				</p:commandButton>
+						<p:commandButton style="
+    margin-top: 10%;
+  margin-bottom:20px;
+width:100%  ; 
+    margin-left: 15px;
+
+    margin-right: auto;
+    
+background-color: transparent;border-style:outset ; height: 60px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+ value="ANNULER" update="ajoutArticle" process="@this" >
+                <p:resetInput target="ajoutArticle" />
+            </p:commandButton>  
+            </h:panelGrid>  
+            
+       </h:panelGrid>
+		</h:form></center>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

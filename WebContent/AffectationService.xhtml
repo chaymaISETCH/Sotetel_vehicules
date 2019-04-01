@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+
+
+#form\3A display.ui-panelgrid td {
+    padding: 0;
+}
+.image{
+    
+     background-size:cover;
+       background-image: url(car.jpg);
+    
+ }
+ 
+ .img{
+ 
+    
+    background-image: url(menu.ico);
+      
+    
+ }
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  *************************************************************************************** -->
+<f:view>
+<center>
+ <h:form id="form">
+	<p:dataTable id="services" var="row" value="#{mBService.l}" 
+	emptyMessage="liste vide"
+	style="width:60%;margin-top:100px;"
+			 widgetVar="servicetab">
+<f:facet name="header">
+
+<div align="left" style="margin-top:10px;">
+<p:outputLabel value="liste des services" />
+    
+		
+</div>
+
+        </f:facet>
+			<p:column headerText="Service" style="width:30%">
+				<p:outputLabel value="#{row.service}"></p:outputLabel>
+				</p:column>	
+					<p:column headerText="Description" style="width:30%">
+				<p:outputLabel value="#{row.des}"></p:outputLabel>
+				</p:column>	
+		
+				
+				
+				
+			<p:column headerText="Affectation" style="width:30%">
+
+<p:commandButton onclick="PF('carDialog2').show();" icon="ui-icon-plus" />
+</p:column>
+
+
+
+				
+		
+			</p:dataTable>
+  
+ 
+	
+	</h:form>
+	<h:form id="f">
+   
+    </h:form>
+    <h:form>
+   <p:dialog header="service" widgetVar="carDialog2" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		<h:form id="ajoutService">
+
+			<h:panelGrid  >
+  
+
+        			           
+				
+        		   <h:outputLabel for="multiple" value="Véhicules" />
+        <p:selectCheckboxMenu id="Véhicules" value="#{mBService.lMat}" label="Véhicules" multiple="true"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+            <f:selectItems value="#{mBVehicule.lMat}" />
+        </p:selectCheckboxMenu>
+        
+        
+        
+        					
+			<h:panelGrid columns="2">				<p:commandButton style="
+
+  
+width:100%  ; 
+
+
+    
+background-color: transparent;border-style:outset ;font-family: 
+    fantasy;font-size: 10px;font-weight:bold;"
+      action="#{mBService.ajout2}"
+     value="VALIDER"
+     update="ajoutService"  >
+				</p:commandButton>
+						<p:commandButton style="width:100%;
+background-color: transparent;border-style:outset ; height: 40px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+ value="ANNULER" update="ajoutService" process="@this" >
+                <p:resetInput target="ajoutArticle" />
+            </p:commandButton>  
+            </h:panelGrid>  
+            
+       </h:panelGrid>
+		</h:form>
+	
+    </p:dialog>  
+    </h:form>
+    
+	
+	
+	
+	
+</center>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

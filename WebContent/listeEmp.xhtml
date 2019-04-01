@@ -1,0 +1,197 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+
+
+
+.image{
+     background-image:url(employe.PNG);
+     background-size:cover;
+      
+    
+ }
+ 
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  *************************************************************************************** -->
+<f:view>
+		<h:form id="ajoutArticle" style=" margin: auto;
+    width: 80%;
+    margin-top: 5%;
+
+    padding: 10px;">
+		
+					
+					
+					
+					<h:form id="form"><center>
+					
+					
+					
+    <p:carousel autoUpdate="true" value="#{mBEmp.l}" id="l" var="emp" itemStyle="text-align:center" responsive="true" >
+                 
+        				
+        <p:panelGrid columns="2" style=" width:355px ; height:250px ; margin:10px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+        
+ <f:facet name="header">
+ 
+                    <p:graphicImage value="emp.png" style="width:80px ; height:80px"/>
+                </f:facet>
+            <h:outputText value="Nom   :   " />
+            <h:outputText value="#{emp.nom}" />
+ 
+            <h:outputText value="Prénom:   " />
+            <h:outputText value="#{emp.prenom}" />
+     <f:facet name="footer">
+     <center>
+    <p:commandButton action="#{mBEmp.show(emp.login)}" icon="ui-icon-search"> 
+    
+    </p:commandButton>
+    
+      
+      <p:commandButton action="#{mBEmp.edit(emp.login)}"  icon="ui-icon-pencil" >
+    </p:commandButton>   
+<p:commandButton icon="ui-icon-close" update="l"  actionListener="#{mBEmp.supp(emp.login)}" >
+        <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+    </p:commandButton>
+ 
+    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
+    
+    
+         </center>
+            </f:facet>
+            
+ 
+        </p:panelGrid>
+
+       
+    </p:carousel>
+    
+					
+		</center>	
+		
+		
+    
+</h:form>
+</h:form>		
+		
+		
+		
+				
+	<p:dialog id="detail" header="Détails employé" widgetVar="dlg3" modal="true"  showEffect="clip" hideEffect="clip" height="300px">
+ <h:form name="fff">
+ <p:outputPanel id="carDetail" style="text-align:center;width:400px; height:400">
+ <center>
+
+            <p:panelGrid  columns="2" columnClasses="label,value" style="width:300px ">
+             
+                <f:facet name="header">
+                    <p:graphicImage value="emp.png" style="width:80px ; height:80px"/>
+                </f:facet>
+               
+               
+                
+  
+  
+  
+                <h:outputText value="Nom:      " />
+                <h:outputText id="ok" value="#{mBEmp.empS.nom}" />
+ 
+                <h:outputText value="Prenom:   " />
+                <h:outputText  value="#{mBEmp.empS.prenom}" /> 
+                
+                <h:outputText value="Fonction: " />
+                <h:outputText  value="#{mBEmp.empS.fonction}" />
+ 
+                <h:outputText value="Adresse:  " />
+                <h:outputText  value="#{mBEmp.empS.adresse}" /> 
+                
+                <h:outputText value="Tél:      " />
+                <h:outputText  value="#{mBEmp.empS.tel}" />
+ 
+                <h:outputText value="E-mail:  " />
+                <h:outputText  value="#{mBEmp.empS.email}" /> 
+
+            </p:panelGrid>
+           
+            </center>
+        </p:outputPanel>   
+         </h:form>
+            </p:dialog>
+    
+ 
+    
+ <!-- ************************************************************************************ -->
+				
+	<p:dialog id="detaill" header="Détails employé" widgetVar="dlg4" modal="true"  showEffect="clip" hideEffect="clip" height="300px">
+ <h:form name="fff">
+ <p:outputPanel id="carDetail" style="text-align:center;width:400px; height:400">
+ <center>
+
+            <p:panelGrid  columns="2" columnClasses="label,value" style="width:300px ">
+             
+                <f:facet name="header">
+                    <p:graphicImage value="emp.png" style="width:80px ; height:80px"/>
+                </f:facet>
+               
+               
+                
+  
+   <h:outputText value="Login:   " />
+                <h:inputText  value="#{mBEmp.empS.login}" /> 
+                 <h:outputText value="Mot de passe :   " />
+                <h:inputText  value="#{mBEmp.empS.motDePasse}" /> 
+  
+                <h:outputText value="Nom:      " />
+                <h:inputText id="ok" value="#{mBEmp.empS.nom}" />
+               
+ 
+                <h:outputText value="Prenom:   " />
+                <h:inputText  value="#{mBEmp.empS.prenom}" /> 
+                
+                <h:outputText value="Fonction: " />
+                <h:inputText  value="#{mBEmp.empS.fonction}" />
+ 
+                <h:outputText value="Adresse:  " />
+                <h:inputText  value="#{mBEmp.empS.adresse}" /> 
+                
+                <h:outputText value="Tél:      " />
+                <h:inputText  value="#{mBEmp.empS.tel}" />
+ 
+                <h:outputText value="E-mail:  " />
+                <h:inputText  value="#{mBEmp.empS.email}" /> 
+                
+                
+<p:commandButton action="#{mBEmp.modif}" value="Modifier"> </p:commandButton>            </p:panelGrid>
+           
+            </center>
+        </p:outputPanel>   
+         </h:form>
+            </p:dialog>
+    
+ 
+		
+</f:view>
+
+
+
+
+
+</h:body>
+</html>

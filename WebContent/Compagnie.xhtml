@@ -1,0 +1,167 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+
+
+#form\3A display.ui-panelgrid td {
+    padding: 0;
+}
+.image{
+    
+     background-size:cover;
+       background-image: url(car.jpg);
+    
+ }
+ 
+ .img{
+ 
+    
+    background-image: url(menu.ico);
+      
+    
+ }
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  *************************************************************************************** -->
+<f:view>
+<center>
+ <h:form id="f">
+ <p:growl id="msg"></p:growl>
+	<p:dataTable id="Carte" var="row" value="#{mBCompagnie.l}" 
+	emptyMessage="liste vide"
+		editable="true"
+
+	style="width:80%;margin-top:100px;"
+			 widgetVar="cartetab">
+			 			 <p:ajax event="rowSelect" listener="#{mBCompagnie.onRowSelect}" update=":f:d" />
+			 
+<f:facet name="header">
+
+<div align="left" style="margin-top:10px;">
+<p:outputLabel value="liste des compagnies d'assurance" />
+    
+		
+</div>
+
+<div align="right" style="margin-right:20px;margin-top:-30px;">
+
+<p:commandButton onclick="PF('d').show();" icon="ui-icon-plus" />
+</div>
+ 
+
+        </f:facet>
+ 
+       <p:column headerText="Numéro">
+       
+              <p:outputLabel value="#{row.num}"></p:outputLabel>
+               
+       </p:column>
+ 
+       <p:column headerText="Compagnie">
+          
+              		<p:outputLabel value="#{row.lib}"></p:outputLabel>
+               
+       </p:column>
+ 
+     
+ 
+ 
+ 
+       <p:column headerText="Adresse">
+           				<p:outputLabel value="#{row.adresse}"></p:outputLabel>
+
+       </p:column>
+ 
+
+				
+		
+			</p:dataTable>
+  
+
+	
+	
+
+
+   <p:dialog header="Contrat d'assurance" id="d" widgetVar="d" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+	
+          
+                <p:messages />
+                <h:panelGrid columns="2" columnClasses="label, value">
+                  
+                    <h:outputText value="Compagnie: *" />
+                              <p:inputText required="true" requiredMessage="veuillez remplir ce champ" value="#{mBCompagnie.visiteDT.num}" />
+
+                    <h:outputText value="Adresse: " />
+                    
+                    <p:inputText required="true" requiredMessage="veuillez remplir ce champ" value="#{mBCompagnie.visiteDT.adresse}" />
+                </h:panelGrid>
+        
+		
+	
+    </p:dialog> 
+    	
+	
+	
+	
+	
+   <p:dialog header="Visite Tachnique" id="d2" widgetVar="d2" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		
+		
+	
+    </p:dialog> 
+    	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</h:form>
+	
+	
+	  
+	
+
+	
+	
+	
+</center>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

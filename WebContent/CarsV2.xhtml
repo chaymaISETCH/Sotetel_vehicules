@@ -1,0 +1,315 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+
+<style>
+
+body{overflow-x: hidden;}
+
+.l{
+pointer-events: none;cursor: pointer;
+}
+.ui-button {
+	color: rgba(255, 255,255,0);
+	text-decoration: none;
+}
+a:hover{
+background-color:darkred;
+background-size:122px;
+}
+
+ .user{
+     background-image:url(i/user.png);
+      background-size:70px;
+          background-repeat:no-repeat;
+      
+    
+ }
+
+.e{
+     background-image:url(i/bbb3.PNG);
+    
+    background-repeat:no-repeat;
+          background-size:100%;
+    
+ }
+.ee{
+     background-image:url(i/back.PNG);
+      
+      
+    
+ }
+ .row{width:800px;}
+a.pagelink2:hover {text-decoration: none;background-color:rgba(255, 255,255,0); }
+
+a.pagelink:link,
+a.pagelink:visited,
+a.pagelink:active { text-decoration: none; }
+
+a.pagelink:hover {text-decoration: none;background-color:black; }
+ .parallax { 
+    /* The image used */
+   background-image: url("i/carr.gif");
+    /* Full height */
+    height: 130%; 
+width:110%;    overflow: hidden;
+
+margin-left:-20%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 120%;
+    
+}
+ .parallax3 { 
+    /* The image used */
+    background-image: url("i/Collage.jpg");
+
+    /* Full height */
+    height: 150%; 
+width:110%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 120%;
+}
+.parallax2{ 
+    /* The image used */
+    background-image: url("i/cc2.PNG");
+width:110%;
+    /* Full height */
+    height: 150%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+</style>
+</h:head>
+<h:body >
+
+<!--  *************************************************************************************** -->
+<f:view>
+
+   <h:form>
+   
+   <!-- ************************************************************************* -->
+   <p:growl id="messages2" for="msg"  showDetail="true" />
+   
+
+   <!-- ***************************************************************************************** -->
+ 
+  <center> 
+    <p:sidebar widgetVar="sidebar1" baseZIndex="10000" style="width:20%;">
+    <center>    <p:graphicImage value="self.png"  style="width:100px;height:100px; margin-top:20px;" >
+					</p:graphicImage>
+        <h3></h3>
+            <p:outputLabel style="margin-top:30px;font-weight:normal;margin-bottom:50px;" value="#{mBEmp.nom_prenomm}"></p:outputLabel>				
+        
+    </center>
+    
+    
+    
+    <h:form>    
+ 
+    <p:panelMenu style="border:none !important;background:none !important;width:230px;" >
+        <p:submenu label="Vehicules" expanded="true">
+             <p:menuitem value="Ajout Vehicule"  icon="ui-icon-disk" />
+            <p:menuitem value="Liste Vehicule"   icon="ui-icon-arrowrefresh-1-w" />
+        </p:submenu>
+                </p:panelMenu>
+            <p:menu style="text-align:center">
+            <p:menuitem value="Visite Technique"   icon="ui-icon-arrowrefresh-1-w"/>
+         
+            
+             <p:menuitem value="Maintenance"   icon="ui-icon-arrowrefresh-1-w"/>
+             <p:menuitem value="Assurance"   icon="ui-icon-arrowrefresh-1-w"/>
+             <p:menuitem value="Carte Carburant"  icon="ui-icon-arrowrefresh-1-w"/>
+              <p:menuitem value="Projets"    icon="ui-icon-arrowrefresh-1-w"/>
+               <p:menuitem value="Employes"  icon="ui-icon-arrowrefresh-1-w"/>
+               <p:separator></p:separator>
+                 <p:menuitem value="Statistique" icon="ui-icon-arrowrefresh-1-w"/>
+              
+                                      <p:menuitem value="Rapport" icon="ui-icon-arrowrefresh-1-w"/>
+                   <p:separator></p:separator>         
+       
+                   <p:separator></p:separator>         
+            <p:menuitem value="Aide"  ajax="false" icon="ui-icon-close"/>
+      
+      
+</p:menu>    </h:form>
+    <p:commandButton value="Annuler" oncomplete="PF('sidebar1').hide()"/>
+</p:sidebar>
+ </center>
+<div style="margin-left:-10px;float:right;text-align:center;z-index:3000;background-color:darkgray;width:110%;height:60px;position:fixed;background-color:rgba(69, 69,69,0.9);">
+
+<h:panelGrid columns="2" width="100%" rowClasses="row" style="vertical-align: top;" >
+	<h:commandLink onmouseover="PF('sidebar1').show()"  class="pagelink2"  style=" margin-left:-18%;vertical-align: top;cursor: pointer;"><p:graphicImage  value="i/menu-4-512.png"  style="margin-left:150px;margin-top:20px;cursor: pointer;width:30px;height:30px;float:both;" >
+					</p:graphicImage></h:commandLink>
+
+
+	<h:commandLink onmouseover="PF('authen').show()" id="l" class="pagelink2"  style="margin-left:53%;cursor: pointer;"><p:graphicImage  value="i/user55.png" id="img2"  style="margin-left:150px;margin-top:20px;cursor: pointer;width:30px;height:30px;float:both;" >
+					</p:graphicImage></h:commandLink></h:panelGrid>
+					<p:overlayPanel for="l"  style="z-index:555555"  widgetVar="authen" showEffect="fade" hideEffect="fade" dismissable="false" showCloseIcon="true">
+     
+<h:form>
+
+    <p:outputLabel style="margin-top:60px;" value="#{mBEmp.nom_prenomm}"></p:outputLabel>				
+
+			<center><p:commandButton
+			action="#{mBEmp.cc}"
+			
+			 style="
+    margin-top: 10%;
+  margin-bottom:20px;
+    margin-right: auto;
+   
+background-color: transparent;border-style:outset ; height: 30px;font-family:'DIN Neuzeit Grotesk';font-size: 17px;"
+     value="Déconnexion"/>
+     
+     </center>
+     
+		</h:form>
+ 
+  
+    </p:overlayPanel>
+ 
+					
+		
+					
+					
+</div>     
+
+<h:form>
+<div id="nff" class="parallax2" style="overflow: hidden;margin:-10px">
+
+
+<h:form id="form" style="overflow: visible;margin-top:-20%;">
+<center>
+
+<h:panelGrid columns="3" style="margin-left:-39%;margin-top:20%;">
+<p:commandButton value="" style="width:100px;margin:-5px;height:50px;border-radius: 10px  0px 0px 0px;background-repeat:no-repeat; background-color:white;   background-image: url(moto.png); background-size: 50px;" oncomplete="PF('sidebar1').show()" >
+
+</p:commandButton>
+<p:commandButton value="" style="width:100px;margin:-5px;height:50px; background-color:white;background-repeat:no-repeat; border-radius: 0px  0px 0px 0px; background-image: url(voiture.png); background-size: 50px;" oncomplete="PF('sidebar1').show()" >
+
+</p:commandButton>
+<p:commandButton value="" style="width:100px;margin:-5px;height:50px; background-color:white;background-repeat:no-repeat;border-radius: 0px  10px 0px 0px;   background-image: url(bus.png); background-size: 50px;" oncomplete="PF('sidebar1').show()" >
+
+</p:commandButton>
+
+
+</h:panelGrid>
+</center>
+
+ 
+    
+    
+
+
+ 
+  <p:carousel value="#{mBVehicule.l}"   headerText="Véhicules" effect="easeInStrong"  style="overflow: visible;border-radius:0px;margin-bottom:20px;width:60%;"  var="car" itemStyle="text-align:center" responsive="true">
+        <h:panelGrid columns="2" style="margin: 0 auto;">
+  
+ <f:facet name="header" style="float:both;">
+      		<p:graphicImage id="img" value="#{mBVehicule.productImagee}"  style="width:150px;height:150px;float:both;" >
+						<f:param name="pid" value="#{car.matricule}" />
+					</p:graphicImage>
+                </f:facet>
+                
+            <p:overlayPanel id="imgPanel" my="left top" at="left top"  for="img" showEffect="blind"  style="position:absolute;overflow: visible;margin-top:-20px;" showEvent="mouseover" hideEvent="mouseover"
+                    dismissable="true" showCloseIcon="true" >
+       <p:graphicImage value="#{mBVehicule.productImagee}"  style="width:200px;height:200px;" >
+						<f:param name="pid" value="#{car.matricule}" />
+					</p:graphicImage>
+    </p:overlayPanel>
+                	
+<h:panelGrid columns="2" style="margin-top:20px;">
+       <h:outputText value="Matricule" style="text-align: center; padding: 10px;font-family:'Book Antiqua';margin-top:50px" />
+            <h:outputText value="#{car.matricule}" style="text-align: center;width:50px;font-family:'Book Antiqua'" />
+ 
+ </h:panelGrid>
+<f:facet name="footer" style="text-align:center;margin-top:20px;margin-bottom:20px;">  <center>
+                <p:commandButton style="margin-top:30px;margin-bottom:20px;" update=":f:carDetail"   oncomplete="PF('carDialog').show()" icon="ui-icon-search">
+                    <f:setPropertyActionListener value="#{car}" target="#{mBVehicule.carS}" />
+                </p:commandButton>
+
+
+  <p:commandButton style="margin-top:30px;margin-bottom:20px;" icon="ui-icon-pencil" >
+                </p:commandButton>
+
+
+
+
+
+   <p:commandButton icon="ui-icon-trash" title="Supprimer" actionListener="#{mBVehicule.supp(car)}">
+        <p:confirm header="Confirmation" message="voulez vous vraimenet supprimer" icon="ui-icon-alert" />
+        
+    </p:commandButton>
+
+ </center>                </f:facet>
+    </h:panelGrid>
+
+    </p:carousel>
+    
+<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+<center>
+        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        
+        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </center></p:confirmDialog>  
+      
+<h:form id="f">
+    <p:dialog header="Véhicule Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="carDetail" style="text-align:center;">
+            <h:panelGrid  columns="2" columnClasses="label,value">
+            <f:facet name="header">
+            		<p:graphicImage value="#{mBVehicule.productImagee}"  style="width:100px;height:100px;margin:20px" >
+						<f:param name="pid" value="#{mBVehicule.carS.matricule}" />
+					</p:graphicImage>
+                </f:facet>
+ 
+              <h:outputText value="Matricule" style="text-align: center; padding: 10px;font-family:'Book Antiqua'" />
+            <h:outputText value="#{mBVehicule.carS.matricule}" style="text-align: center;margin:10px; padding: 10px;font-family:'Book Antiqua'" />
+             <h:outputText value="Puissance" style="text-align: center; padding: 10px;font-family:'Book Antiqua'"/>
+            <h:outputText value="#{mBVehicule.carS.puissance}" style="text-align: center; padding: 10px;font-family:'Book Antiqua'"/>
+ 
+            <h:outputText value="Carte" style="text-align: center; padding: 10px;font-family:'Book Antiqua'"/>
+            <h:outputText value="#{mBVehicule.carS.numCarteGrise}" style="text-align: center; padding: 10px;font-family:'Book Antiqua'"/>
+   <h:outputText value="Couleur" style="text-align: center; padding: 10px;font-family:'Book Antiqua'"/>
+    <div style="width: 30px;height: 30px;margin:0px auto;border-radius: 15px;border-color:white;background: ##{mBVehicule.carS.couleur};"></div>
+    
+            </h:panelGrid>
+        </p:outputPanel>
+    </p:dialog>  
+ 
+			</h:form>	
+
+
+		
+
+
+
+</h:form>
+
+
+</div>		</h:form>
+
+</h:form>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

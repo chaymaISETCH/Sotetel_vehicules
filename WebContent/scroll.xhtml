@@ -1,0 +1,378 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+
+<style>
+
+body{overflow-x: hidden;}
+
+.l{
+pointer-events: none;cursor: pointer;
+}
+.ui-button {
+	color: rgba(255, 255,255,0);
+	text-decoration: none;
+}
+a:hover{
+background-color:darkred;
+background-size:122px;
+}
+
+ .user{
+     background-image:url(i/user.png);
+      background-size:70px;
+          background-repeat:no-repeat;
+      
+    
+ }
+
+.e{
+     background-image:url(i/bbb3.PNG);
+    
+    background-repeat:no-repeat;
+          background-size:100%;
+    
+ }
+.ee{
+     background-image:url(i/back.PNG);
+      
+      
+    
+ }
+a.pagelink2:hover {text-decoration: none;background-color:rgba(255, 255,255,0); }
+
+a.pagelink:link,
+a.pagelink:visited,
+a.pagelink:active { text-decoration: none; }
+
+a.pagelink:hover {text-decoration: none;background-color:black; }
+ .parallax { 
+    /* The image used */
+   background-image: url("i/carr.gif");
+    /* Full height */
+    height: 130%; 
+width:110%;    overflow: hidden;
+
+margin-left:-20%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 120%;
+    
+}
+ .parallax3 { 
+    /* The image used */
+    background-image: url("i/Collage.jpg");
+
+    /* Full height */
+    height: 150%; 
+width:110%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 120%;
+}
+.parallax2{ 
+    /* The image used */
+    background-image: url("i/cc2.PNG");
+width:110%;
+    /* Full height */
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 120%;
+}
+</style>
+</h:head>
+<h:body >
+
+<!--  *************************************************************************************** -->
+<f:view>
+
+   <h:form>
+   
+   <!-- ************************************************************************* -->
+   <p:growl id="messages2" for="msg"  showDetail="true" />
+   
+
+   <!-- ***************************************************************************************** -->
+ 
+  <center> 
+<div style="margin-left:-10px;text-align:center;float:both;z-index:3000;background-color:darkgray;width:110%;height:60px;position:fixed;background-color:rgba(69, 69,69,0.9);">
+<a href="#d" style="text-decoration: none;border:none;font-size:17px;color:white;margin-left:25%;width:200px;font-family:'DIN Next Light';text-align:center;width:150px;height:60px;display:block;float:left;padding-top:-40px;" >
+<p:outputLabel style="text-align:center;margin-top:20px;position:absolute;margin-left:-35px;font-family:'DIN Next Light';" value="A propos"></p:outputLabel></a>
+
+<a href="#n" style="text-decoration: none;border:none;font-size:17px;color:white;width:200px;font-family:'DIN Next Light';text-align:center;width:150px;height:60px;display:block;float:left;padding-top:-40px;" >
+<p:outputLabel style="text-align:center;margin-top:20px;position:absolute;margin-left:-55px;font-family:'DIN Next Light';" value="Nos Activités"></p:outputLabel></a>
+<a href="#n2" style="text-decoration: none;border:none;font-size:17px;color:white;width:200px;font-family:'DIN Next Light';text-align:center;width:150px;height:60px;display:block;float:left;padding-top:-40px;" >
+<p:outputLabel style="text-align:center;margin-top:20px;position:absolute;margin-left:-55px;font-family:'DIN Next Light';" value="Nos Solutions"></p:outputLabel></a>
+<a href="#c" style="text-decoration: none;border:none;font-size:17px;color:white;width:200px;font-family:'DIN Next Light';text-align:center;width:150px;height:60px;display:block;float:left;padding-top:-40px;" >
+<p:outputLabel style="text-align:center;margin-top:20px;position:absolute;margin-left:-25px;font-family:'DIN Next Light';" value="     Contact   "></p:outputLabel></a>
+<h:form>
+
+
+
+	<h:commandLink id="l" class="pagelink2"  style="cursor: pointer;"><p:graphicImage  value="i/user55.png" id="img2"  style="margin-left:150px;margin-top:20px;cursor: pointer;width:30px;height:30px;float:both;" >
+					</p:graphicImage></h:commandLink>
+					
+					<p:overlayPanel for="l"  style="z-index:555555"  widgetVar="authen" showEffect="fade" hideEffect="fade" dismissable="false" showCloseIcon="true">
+     
+<h:form>
+
+        
+				<p:inputText 
+				placeholder="Login" 
+				id="lll" required="true"
+				value="#{mBEmp.e.login}" style="margin-top:50px;"
+				requiredMessage="veuillez remplir ce champ"></p:inputText>
+				<p:message for="lll" display="text"  />
+
+			
+				
+					
+				<p:password requiredMessage="ok"
+				id="ppp" required="true"
+				placeholder="Mot de passe"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBEmp.e.motDePasse}" >     <f:validateLength minimum="8" ></f:validateLength>
+				 </p:password>
+        		<p:message for="ppp" display="tooltip" />
+       		
+			<center><p:commandButton
+			action="#{mBEmp.cc}"
+			
+			 style="
+    margin-top: 10%;
+  margin-bottom:20px;
+    margin-right: auto;
+   
+background-color: transparent;border-style:outset ; height: 30px;font-family:'DIN Neuzeit Grotesk';font-size: 17px;"
+     value="VALIDER"/>
+     
+     </center>
+     
+		</h:form>
+ 
+  
+    </p:overlayPanel>
+ 
+					
+					
+					
+			</h:form>		
+					
+					
+</div>
+
+<div id="nff" class="parallax" style="overflow: hidden;margin:-10px">
+
+
+<h1 style="margin-left:35%;font-family:'DIN Neuzeit Grotesk';position:absolute;margin-top:250px;color:white;text-align:center;font-size:68px;">Parc Automobile </h1>
+<h6 style="margin-left:50%;font-family:'Futura Light';position:absolute;margin-top:350px;color:white;text-align:center;font-size:21px;">SOTETEL</h6>
+<div id="nff1" style="margin-top:40%">
+		<a class="pagelink"  href="https://www.facebook.com/SOTETELBroadbandIntegrator" style="margin-top:60%;width:0px;height:0px"><image src="i/in.png" style="margin-top:40px;width:40px;height:40px;float:both;"/></a>
+      		<a class="pagelink" href="https://twitter.com/SOTETEL1"><image src="i/fb.png" style="margin-top:30px;width:40px;height:40px;float:both;"/></a>
+<a class="pagelink" href="https://twitter.com/SOTETEL1"><image src="i/twitter.png" style="width:40px;height:40px;float:both;margin-top:30px;" /></a><br/>
+
+
+</div>
+</div>
+<div style="overflow:hidden;width:105%;margin-left:-40px;height:110%;" class="parallax2">
+<div  style="height:60%;background-color:rgba(255, 255,255,0.8);">
+<h:panelGrid columns="1" style="text-align:center;width:100%;" > 
+<h1 style="font-family:'Lucida Sans Unicode';margin-top:80px;color:black;text-align:center;font-size:34px;margin-bottom:30px;">SOTETEL</h1>
+
+<hr style="text-align:center;color:darkred;font-weight:bold;margin-bottom:30px;"/>
+
+<h:panelGrid columns="6" style="width:100%;text-align:center;">
+
+  
+
+
+<p style="font-family:'Lucida Sans Unicode';text-indent:20px;color:black;text-align:center;font-size:17px;margin-top:30px;border-right:3px solid dimgray;">
+A constamment joué un rôle prépondérant<br />
+ dans le déploiement de l'infrastructure<br />
+  des télécommunications en Tunisie.
+</p>​<p:outputLabel value=""/>
+
+<p:graphicImage  value="i/30-ans.png" id="img255"  style="width:80px;height:80px;float:both;margin-bottom:30px;margin-top:-40px;" >
+					</p:graphicImage>
+					      	
+
+​<p:outputLabel value=""/>
+​
+ 
+<p style="font-family:'Lucida Sans Unicode';text-indent:20px;color:black;text-align:center;font-size:17px;margin-top:20px;border-left:3px solid dimgray;">
+Se positionne comme le partenaire <br />privilégié
+ des principaux équipementiers<br /> internationaux
+  opérant en Tunisie.
+
+</p>
+
+
+​<p:outputLabel  value=""/>
+<p:outputLabel value=""/><p style="margin-top:-60px;font-family:'Lucida Sans Unicode';text-indent:20px;color:black;text-align:center;font-size:17px;">
+ muni d’une forte expérience<br/> de 30 ans 
+</p>
+</h:panelGrid>
+</h:panelGrid>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+<div style="overflow: hidden;width:120%;margin-left:-20px;text-align:center;height:150%" class="parallax3">
+<div  id="n" style="width:85%;height:75%;z-index:3500;background-color:rgba(255, 255,255,0.8);margin-left:0%;">
+
+
+<h:panelGrid columns="1" style="text-align:center;" > 
+<h1 style="font-family:'Lucida Sans Unicode';margin-top:20px;color:black;text-align:center;font-size:34px;">Nos Acitivités</h1>
+<hr style="text-align:center;color:darkred;font-weight:bold;"/>
+<h:panelGrid columns="8" style="width:100%;text-align:center;">
+
+      		<p:graphicImage id="img" value="i/res2.png" style="width:50px;height:50px;float:both;margin-bottom:30px;" >
+					</p:graphicImage>
+					 <span/>					
+      		<p:graphicImage id="img5" value="i/res2.png" style="width:50px;height:50px;float:both;margin-bottom:30px;" >
+					</p:graphicImage>
+ <span/>					
+					      		<p:graphicImage  value="i/wifi.png" id="img2444"  style="width:50px;height:50px;float:both;margin-bottom:30px;" >
+					</p:graphicImage>
+ 		<span/>			
+					      		<p:graphicImage id="img3"  value="i/ser.png" style="width:50px;height:50px;float:both;margin-bottom:30px;" >
+					</p:graphicImage>
+				<span/>
+
+
+<p:outputLabel style="font-family:'Tahoma';margin-top:2px;color:black;text-align:center;font-size:20px;" value="Réseau d'Accès" />
+<span/>
+<p:outputLabel style="font-family:'Tahoma';margin-top:2px;color:black;text-align:center;font-size:20px;" value="Réseau Core et Backbone" />
+<span/>
+<p:outputLabel style="font-family:'Tahoma';margin-top:2px;color:black;text-align:center;font-size:20px;" value="Réseau Wireless" />
+<span/>
+<p:outputLabel style="font-family:'Tahoma';margin-top:2px;color:black;text-align:center;font-size:20px;" value="Services Convergents" />
+<p:outputLabel />
+
+</h:panelGrid>
+
+		<p:graphicImage value="i/Collage2.jpg" style="width:90%;height:20%;float:both;margin-bottom:30px;margin:20px" >
+					</p:graphicImage>
+</h:panelGrid>
+</div>
+
+</div>
+
+
+
+
+
+
+<div style="overflow: hidden;width:120%;margin-left:-20px;text-align:center;height:135%" class="parallax3">
+<div   id="n4" style="width:85%;height:80%;z-index:3500;background-color:rgba(255, 255,255,0.8);margin-left:0%;">
+
+
+<h:panelGrid columns="1" style="text-align:center;" > 
+<h1 style="font-family:'Lucida Sans Unicode';margin-top:20px;color:black;text-align:center;font-size:34px;">Nos Solution</h1>
+<hr style="text-align:center;color:darkred;font-weight:bold;"/>
+<h:panelGrid columns="8" style="width:100%;text-align:center;">
+
+      		<p:graphicImage value="i/com.png" style="width:50px;height:50px;float:both;margin-bottom:30px;" >
+					</p:graphicImage>
+ <span/>					
+      		<p:graphicImage value="i/data.png" style="width:50px;height:50px;float:both;margin-bottom:30px;" >
+					</p:graphicImage>
+ <span/>					
+					      		<p:graphicImage  value="i/iptv.png" style="width:50px;height:50px;float:both;margin-bottom:30px;" >
+					</p:graphicImage>
+ 		<span/>			
+					      		<p:graphicImage  value="i/sec.png" style="width:50px;height:50px;float:both;margin-bottom:30px;" >
+					</p:graphicImage>
+				<span/>
+
+
+<p:outputLabel  style="font-family:'Tahoma';margin-top:2px;color:black;text-align:center;font-size:20px;"  escape="false"  value="Communication Unifiée &lt;br/&gt;  et travail collaboratif" />
+<span/>
+<p:outputLabel style="font-family:'Tahoma';margin-top:2px;color:black;text-align:center;font-size:20px;" value="Solution Data Center" />
+<span/>
+<p:outputLabel style="font-family:'Tahoma';margin-top:2px;color:black;text-align:center;font-size:20px;" value="Solution Manager" />
+<span/>
+<p:outputLabel style="font-family:'Tahoma';margin-top:2px;color:black;text-align:center;font-size:20px;" value="Solution de Sécurité" />
+
+</h:panelGrid>
+
+		<p:graphicImage value="i/sol.jpg" style="width:90%;height:20%;float:both;margin-bottom:30px;margin:20px" >
+		
+		
+		
+		
+					</p:graphicImage>
+					
+					
+					
+
+
+</h:panelGrid>
+
+
+</div>
+<h:panelGrid id="c" columns="1" style="text-align:center;width:80%;background-color:rgba(0, 0,0,0.3);" >
+
+
+
+      		<a class="l" href="https://www.facebook.com/SOTETELBroadbandIntegrator"><image src="i/in.png" style="margin-top:40px;width:40px;height:40px;float:both;"/></a>
+      		<a class="l" href="https://twitter.com/SOTETEL1"><image src="i/fb.png" style="margin-top:30px;width:40px;height:40px;float:both;"/></a>
+<a class="l" href="https://twitter.com/SOTETEL1"><image src="i/twitter.png" style="width:40px;height:40px;float:both;margin-top:30px;" /></a><br/><center>
+<h:panelGrid columns="4" style="text-align:center;margin-top:30px;width:100%;margin-bottom:10px;margin-left:-40px;">
+
+
+<p:outputLabel style="font-family:'DIN Neuzeit Grotesk';margin-top:20px;color:white;text-align:center;font-size:20px;font-weight:bold;" value="Adresse" />
+<p:outputLabel style="font-family:'DIN Neuzeit Grotesk';margin-top:20px;color:white;text-align:center;font-size:20px;font-weight:bold;" value="Email" />
+
+<p:outputLabel style="font-family:'DIN Neuzeit Grotesk';margin-top:20px;color:white;text-align:center;font-size:20px;font-weight:bold;" value="Téléphone" />
+<p:outputLabel style="font-family:'DIN Neuzeit Grotesk';margin-top:20px;color:white;text-align:center;font-size:20px;font-weight:bold;" value="Fax" />
+
+<p:outputLabel style="font-family:'DIN Neuzeit Grotesk';margin-top:20px;color:white;text-align:center;font-size:15px;font-weight:bold;" value="Rue des Entrepreneurs Charguia II" />
+<p:outputLabel style="font-family:'DIN Neuzeit Grotesk';margin-top:20px;color:white;text-align:center;font-size:15px;font-weight:bold;" value="contact@sotetel.tn." />
+
+<p:outputLabel style="font-family:'DIN Neuzeit Grotesk';margin-top:20px;color:white;text-align:center;font-size:15px;font-weight:bold;" value="(+216) 71 941 100" />
+<p:outputLabel style="font-family:'DIN Neuzeit Grotesk';margin-top:20px;color:white;text-align:center;font-size:15px;font-weight:bold;" value="(+216) 71 940 584" />
+
+
+</h:panelGrid></center>
+<p:outputLabel/><p:outputLabel  style="font-family:'DIN Neuzeit Grotesk';margin-top:0px;color:white;text-align:center;font-size:10px;" value="2018 par Sameh et Chayma" />
+<p:outputLabel/>
+
+
+</h:panelGrid>
+</div>
+<div>
+
+
+
+</div>
+</center>
+</h:form>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

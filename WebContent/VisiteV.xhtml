@@ -1,0 +1,254 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+
+
+#form\3A display.ui-panelgrid td {
+    padding: 0;
+}
+.image{
+    
+     background-size:cover;
+       background-image: url(car.jpg);
+    
+ }
+ 
+ .img{
+ 
+    
+    background-image: url(menu.ico);
+      
+    
+ }
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  *************************************************************************************** -->
+<f:view>
+<center>
+ <h:form id="f">
+ 
+	<p:dataTable id="visite" var="row" value="#{mBVisiteV2.l}" 
+	emptyMessage="liste vide"
+	rowKey="#{row.num}"
+	selectionMode="single"
+	style="width:60%;margin-top:100px;"
+			 widgetVar="cartetab">
+			 
+			 <p:ajax event="rowSelect" listener="#{mBVisiteV2.onRowSelect}" update=":f:d" />
+        
+			 
+			 
+<f:facet name="header">
+
+<div align="left" style="margin-top:10px;">
+<p:outputLabel value="liste des Visites Technique" />
+    
+		
+</div>
+
+<div align="right" style="margin-right:20px;margin-top:-30px;">
+
+<p:commandButton onclick="PF('d2').show();" icon="ui-icon-plus"/>
+</div>
+
+        </f:facet>
+			<p:column headerText="Numéro" style="width:30%">
+				<p:outputLabel value="#{row.num}"></p:outputLabel>
+				</p:column>	
+					<p:column headerText="Date" style="width:30%">
+				<p:outputLabel value="#{row.date}"></p:outputLabel>
+				</p:column>	
+			<p:column headerText="Matricule" style="width:30%">
+				<p:outputLabel value="#{row.vehicule.matricule}"></p:outputLabel>
+				</p:column>	
+				
+				
+				
+						
+			
+				
+
+
+				
+		
+			</p:dataTable>
+  
+
+	
+	
+
+
+   <p:dialog header="Visite Tachnique" id="d" widgetVar="d" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		
+
+			<h:panelGrid  columns="2">
+  
+    <p:outputLabel value="Numéro"></p:outputLabel>
+        			           
+				<p:outputLabel 
+				id="num2" 
+			
+				 style="margin-top:5px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBVisiteV2.visiteDT.num}" ></p:outputLabel>
+				
+				   <p:outputLabel value="Date"></p:outputLabel>
+        			           
+				<p:outputLabel 
+			
+			
+				 style="margin-top:5px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBVisiteV2.visiteDT.date}" ></p:outputLabel>
+				
+						
+				   <p:outputLabel value="Durée"></p:outputLabel>
+        			           
+				<p:outputLabel 
+			
+			
+				 style="margin-top:5px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBVisiteV2.visiteDT.duree}" ></p:outputLabel>
+				
+						 
+										   <p:outputLabel value="Observation"></p:outputLabel>
+				
+					<p:outputLabel 
+			
+			
+				 style="margin-top:5px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBVisiteV2.visiteDT.observation}" ></p:outputLabel>
+				   <p:outputLabel value="Matricule"></p:outputLabel>
+				
+					<p:outputLabel 
+			
+			
+				 style="margin-top:5px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBVisiteV2.visiteDT.vehicule.matricule}" ></p:outputLabel>
+    		
+       </h:panelGrid>
+		
+	
+    </p:dialog> 
+    	
+	
+	
+	 
+<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+<center>
+        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        
+        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </center></p:confirmDialog>  
+      
+	
+   <p:dialog header="Visite Tachnique" id="d2" widgetVar="d2" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		
+<h:form>
+			<h:panelGrid  columns="3">
+    <p:outputLabel value="Date"></p:outputLabel>
+				
+				  <p:calendar  requiredMessage="veuillez remplir ce champ"
+				id="v9" required="true"
+				  style="margin-top:50px;padding-top:50px;margin-bottom:20px;margin-left:20px;margin-right:20px"
+				 value="#{mBVisiteV2.visiteDT2.date}" placeholder="Date"  pattern="dd-MM-yyyy" mask="true" />
+				
+												<p:message for="v9" display="text"/>
+				
+		
+				
+ <p:outputLabel value="Observation"></p:outputLabel>
+			<p:inputTextarea rows="5" value="#{mBVisiteV2.visiteDT2.observation}"  cols="30"  maxlength="10"  autoResize="false" />
+				   <p:outputLabel value="Matricule" />
+				
+				<p:selectOneMenu id="menu" value="#{mBVisiteV.visiteDT2.vehicule.matricule}" >
+   <f:selectItems value="#{mBVehicule.lMat}" />
+   </p:selectOneMenu>
+	<p:message for="menu" display="text"/>
+     <p:growl id="messages2" for="msg"  showDetail="true" />
+				
+				
+						
+				   <p:outputLabel value="Durée"></p:outputLabel>
+        			           
+				<p:inputText 
+				requiredMessage="veuillez remplir ce champ"
+				required="true"
+			id="i2"
+				 style="margin-top:5px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBVisiteV2.visiteDT2.duree}" />
+								<p:message for="i2" display="text"/>		   
+				   
+				   
+				   
+				   
+				    <p:outputLabel value="Matricule"></p:outputLabel>
+        			           
+		
+		
+    		
+       </h:panelGrid>
+	</h:form>
+		
+	
+    </p:dialog> 
+    	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</h:form>
+	
+	
+	  
+	
+
+	
+	
+	
+</center>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

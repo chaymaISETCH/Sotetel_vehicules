@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+
+
+
+.image{
+     background-image:url(car.jpg);
+     background-size:cover;
+      
+    
+ }
+ 
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  *************************************************************************************** -->
+<f:view>
+		<h:form id="ajoutArticle" style=" margin: auto;
+    width: 80%;
+    margin-top: 5%;
+
+    padding: 10px;">
+		<p:commandButton style="
+    margin-top: 10%;
+  margin-bottom:20px;
+width:100%  ; 
+
+    margin-right: auto;
+    
+background-color: transparent;border-style:outset ; height: 60px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+      action="#{mBVehicule.ok()}"
+     value="show">
+				</p:commandButton>
+					
+					
+					
+					<h:form id="form">
+  <p:carousel value="#{mBVehicule.l}"  var="car" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+           
+ <f:facet name="header">
+                 	<p:graphicImage  value="#{mBVehicule.dbImage}" style="width:50px;height:50px"  >
+                 	            <f:param name="inv" value="5555" />
+                 	
+                 	</p:graphicImage>
+                </f:facet>
+            
+                 	
+
+                
+            <h:outputText value="Id:" />
+            <h:outputText value="#{car.matricule}" />
+ 
+            <h:outputText value="Year" />
+            <h:outputText value="#{car.puissance}" />
+ 
+            <h:outputText value="Color:" />
+            <h:outputText value="#{car.carte}"/>
+ 
+        </p:panelGrid>
+ 
+       
+    </p:carousel>
+		
+		
+		
+		   <p:carousel value="#{mBVehicule.listImage}"  var="l" itemStyle="text-align:center" responsive="true">
+            <h:outputText value="#{l.id}" />
+
+                 	<p:graphicImage  value="#{mBVehicule.listImage[2].image}" style="width:50px;height:50px"  >
+                 	                 	            <f:param name="inv" value="5555" />
+                 	
+                 	</p:graphicImage>
+     <p:graphicImage  value="#{l.image}" style="width:50px;height:50px"  >
+                 	                 	            <f:param name="inv" value="5555" />
+                 	
+                 	</p:graphicImage>
+             <h:outputText value="#{mBVehicule.listImage[l.id].id}" />
+ 
+    </p:carousel>	
+    
+    
+    <p:dataTable var="car" value="#{mBVehicule.listImage}" rowIndexVar="car.id">
+    <p:column headerText="Id">
+        <h:outputText value="#{car.id}" />
+    </p:column>
+     <p:column headerText="image">
+ 
+ <p:graphicImage  value="#{mBVehicule.listImage[2].image}" style="width:50px;height:50px"  >
+                 	            <f:param name="inv" value="5555" />
+                 	
+                 	</p:graphicImage>
+                 	</p:column>
+</p:dataTable>
+    
+    
+    
+		
+	<!-- 
+		
+	    <p:carousel value="#{mBVehicule.list}"  var="l" itemStyle="text-align:center" responsive="true">
+
+                 	<p:graphicImage  value="#{mBVehicule.list[mBVehicule.i]}" style="width:50px;height:50px"  >
+                 	            <f:param name="studentId" value="okkkkkkkkkkkk" />
+                 	
+                 	</p:graphicImage>
+     
+ 
+       
+    </p:carousel>	
+		
+	
+		
+	 -->					
+					
+</h:form>						
+		</h:form>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

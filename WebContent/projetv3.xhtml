@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+
+
+#form\3A display.ui-panelgrid td {
+    padding: 0;
+}
+.image{
+    
+     background-size:cover;
+       background-image: url(car.jpg);
+    
+ }
+ 
+ .img{
+ 
+    
+    background-image: url(menu.ico);
+      
+    
+ }
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<h:form>
+    <p:dataTable var="pro" value="#{mBPro.l}" sortBy="#{pro.code}" expandableRowGroups="true">
+        <p:headerRow>
+            <p:column colspan="3">
+                <h:outputText value="#{pro.code}" />
+            </p:column>
+              <p:column headerText="Date">
+            <h:outputText value="#{pro.dateDeb}" />
+        </p:column>
+        </p:headerRow>
+     
+      <p:subTable var="stats" value="#{pro.missions}">
+           
+            <p:column>
+                <h:outputText value="#{stats.num}" />
+            </p:column>
+           <p:column>
+                <h:outputText value="#{stats.des}" />
+            </p:column>
+        </p:subTable>
+    </p:dataTable>
+    
+    
+    
+    
+</h:form>
+
+
+
+
+</h:body>
+</html>

@@ -1,0 +1,180 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+
+
+#form\3A display.ui-panelgrid td {
+    padding: 0;
+}
+
+
+
+body {
+
+height:100%;
+
+}
+.parallax{ 
+    /* The image used */
+    
+
+}
+ .img{
+ 
+    
+    background-image: url(menu.ico);
+      
+    
+ }
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+ 
+ .imgCanva {
+  display: none;
+  height:100%
+}
+
+ 
+</style>
+</h:head>
+<h:body >
+
+
+<div style="position:relative;">
+<div style="position: absolute;">
+<img src="car5.jpg" class="imgCanva" style="z-index:0;height:100%;" />
+   
+ <script src="pfff.js"/>
+</div>
+
+<!--  *************************************************************************************** -->
+
+<f:view style="z-index:2500;position: absolute;"><h:form>
+ <center> 
+    <p:sidebar widgetVar="sidebar1" baseZIndex="10000" style="width:20%;">
+    <center>    <p:graphicImage value="self.png"  style="width:100px;height:100px; margin-top:20px;" >
+					</p:graphicImage>
+        <h3></h3>
+            <p:outputLabel style="margin-top:30px;font-weight:normal;margin-bottom:50px;" value="#{mBEmp.nom_prenomm}"></p:outputLabel>				
+        
+    </center>
+    
+    
+    
+    <h:form>    
+ 
+    <p:panelMenu style="border:none !important;background:none !important;width:230px;" >
+        <p:submenu label="Vehicules" expanded="true">
+             <p:menuitem value="Ajout Vehicule"  icon="ui-icon-disk" />
+            <p:menuitem value="Gestion des Véhicules"   icon="ui-icon-arrowrefresh-1-w" />
+        </p:submenu>
+                </p:panelMenu>
+            <p:menu style="text-align:center">
+            <p:menuitem value="Visite Technique"   icon="ui-icon-arrowrefresh-1-w"/>
+         
+            
+             <p:menuitem value="Maintenance"   icon="ui-icon-arrowrefresh-1-w"/>
+             <p:menuitem value="Contrat d'Assurance"   icon="ui-icon-arrowrefresh-1-w"/>
+             <p:menuitem value="Carte Carburant"  icon="ui-icon-arrowrefresh-1-w"/>
+              <p:menuitem value="Projets"    icon="ui-icon-arrowrefresh-1-w"/>
+               <p:menuitem value="Employes"  icon="ui-icon-arrowrefresh-1-w"/>
+               <p:separator></p:separator>
+                 <p:menuitem value="Statistique" icon="ui-icon-arrowrefresh-1-w"/>
+              
+                                      <p:menuitem value="Rapport" icon="ui-icon-arrowrefresh-1-w"/>
+                   <p:separator></p:separator>         
+       
+                   <p:separator></p:separator>         
+            <p:menuitem value="Aide"  ajax="false" icon="ui-icon-close"/>
+      
+      
+</p:menu>    </h:form>
+    <p:commandButton value="Annuler" oncomplete="PF('sidebar1').hide()"/>
+</p:sidebar>
+ 
+<div style="margin-left:-10px;float:right;text-align:center;z-index:3000;background-color:darkgray;width:110%;height:60px;position:fixed;background-color:rgba(69, 69,69,0.9);">
+
+<h:panelGrid columns="2" width="100%" rowClasses="row" style="vertical-align: top;" >
+	<h:commandLink onmouseover="PF('sidebar1').show()"  class="pagelink2"  style=" margin-left:-18%;vertical-align: top;cursor: pointer;"><p:graphicImage  value="i/menu-4-512.png"  style="margin-left:150px;margin-top:20px;cursor: pointer;width:30px;height:30px;float:both;" >
+					</p:graphicImage></h:commandLink>
+
+
+	<h:commandLink onmouseover="PF('authen').show()" id="l" class="pagelink2"  style="margin-left:53%;cursor: pointer;"><p:graphicImage  value="i/user55.png" id="img2"  style="margin-left:150px;margin-top:20px;cursor: pointer;width:30px;height:30px;float:both;" >
+					</p:graphicImage></h:commandLink></h:panelGrid>
+					<p:overlayPanel for="l"  style="z-index:555555"  widgetVar="authen" showEffect="fade" hideEffect="fade" dismissable="false" showCloseIcon="true">
+     
+<h:form>
+
+    <p:outputLabel style="margin-top:60px;" value="#{mBEmp.nom_prenomm}"></p:outputLabel>				
+
+			<center><p:commandButton
+			action="#{mBEmp.cc}"
+			
+			 style="
+    margin-top: 10%;
+  margin-bottom:20px;
+    margin-right: auto;
+   
+background-color: transparent;border-style:outset ; height: 30px;font-family:'DIN Neuzeit Grotesk';font-size: 17px;"
+     value="Déconnexion"/>
+     
+     </center>
+     
+		</h:form>
+ 
+  
+    </p:overlayPanel>
+ 
+					
+		
+					
+					
+</div>
+</center></h:form>
+</f:view>
+
+</div>
+
+
+<!-- ********************************************************* -->
+<div style="position:relative;margin-top:-50%;margin-left:25%;">
+<center>
+<div id="nff" class="parallax" style="overflow: hidden;margin:-10px;position:absolute;width:70%;">
+
+	
+<h:form id="form" style="overflow: visible;margin-top:150px;">
+
+<h:panelGrid columns="3">
+<p:outputLabel style="color:black;" value="Véhicule : "></p:outputLabel>
+
+<p:selectOneMenu style="margin-left:8%" required="true"  requiredMessage="veuillez remplir ce champ"
+			  id="menu1" value="#{mBStat.mat}" >
+			   <p:ajax event="change" update="form"/>
+   <f:selectItems value="#{mBVehicule.lMat}" />
+   </p:selectOneMenu>
+   
+   <p:outputLabel style="color:black;" value="#{mBStat.mat}"></p:outputLabel>
+</h:panelGrid>
+     <p:chart  type="bar"  model="#{mBStat.animatedModel2}" style="width:600px;" />
+ 
+    
+
+
+ 
+				
+		</h:form></div>
+</center>
+
+</div>
+
+
+</h:body>
+</html>

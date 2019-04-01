@@ -1,0 +1,201 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+
+
+#form\3A display.ui-panelgrid td {
+    padding: 0;
+}
+.image{
+    
+     background-size:cover;
+       background-image: url(car.jpg);
+    
+ }
+ 
+ .img{
+ 
+    
+    background-image: url(menu.ico);
+      
+    
+ }
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  *************************************************************************************** -->
+<f:view>
+<center>
+ <h:form id="form">
+	<p:dataTable id="services" var="row" value="#{mBService.l}" 
+	emptyMessage="liste vide"
+	style="width:60%;margin-top:100px;"
+			 widgetVar="servicetab">
+<f:facet name="header">
+
+<div align="left" style="margin-top:10px;">
+<p:outputLabel value="liste des services" />
+    
+		
+</div>
+
+<div align="right" style="margin-right:20px;margin-top:-30px;">
+
+<p:commandButton onclick="PF('carDialog2').show();" icon="ui-icon-plus" />
+</div>
+
+        </f:facet>
+			<p:column headerText="Service" style="width:30%">
+				<p:outputLabel value="#{row.service}"></p:outputLabel>
+				</p:column>	
+					<p:column headerText="Description" style="width:30%">
+				<p:outputLabel value="#{row.des}"></p:outputLabel>
+				</p:column>	
+		
+				
+				
+				
+						
+				<p:column headerText="Modifier" style="width:10%">
+		 <p:commandButton update=":f"   action="#{mBService.modif2}" icon="ui-icon-pencil" >      
+		    <f:setPropertyActionListener value="#{row}" target="#{mBService.selservice}" />             
+                </p:commandButton>
+				</p:column>		
+				
+				
+					<p:column headerText="Supprimer" style="width:10%">
+				
+   <p:commandButton icon="ui-icon-trash" title="Supprimer" actionListener="#{mBService.supp(row)}">
+        <p:confirm header="Confirmation" message="voulez vous vraimenet supprimer" icon="ui-icon-alert" />
+        
+    </p:commandButton>
+				</p:column>	
+				
+
+
+				
+		
+			</p:dataTable>
+  
+<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+<center>
+        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        
+        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </center></p:confirmDialog>   
+	
+	</h:form>
+	<h:form id="f">
+   <p:dialog header="service" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+   <h:panelGrid columns="2">
+             
+     <p:outputLabel value="Service"></p:outputLabel>
+       
+     <p:inputText value="#{mBService.selservice.service}" id="s" required="true"
+				requiredMessage="veuillez remplir ce champ"></p:inputText>
+     
+     
+
+				<p:message for="s" />
+     
+ 
+          <p:outputLabel value="Description"></p:outputLabel>
+         
+     <p:inputText value="#{mBService.selservice.des}"></p:inputText>
+    <center><p:commandButton style="
+    margin-top: 10%;
+  margin-bottom:20px;
+
+
+    margin-right: auto;
+    
+background-color: transparent;border-style:outset ; height: 60px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+      action="#{mBService.modif}"
+     value="VALIDER"
+       >
+				</p:commandButton>
+</center> 
+</h:panelGrid>
+	
+    </p:dialog>  
+    </h:form>
+    <h:form>
+   <p:dialog header="service" widgetVar="carDialog2" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		<h:form id="ajoutService">
+
+			<h:panelGrid  >
+  
+
+        			           
+				<p:inputText 
+				placeholder="Service" 
+				id="service" required="true"
+				requiredMessage="veuillez remplir ce champ"
+				 style="margin-top:5px;margin-left:20px;margin-right:20px"
+				
+				value="#{mBService.e.service}" ></p:inputText>
+				<p:message for="service" />
+				<p:inputText 
+				requiredMessage="veuillez remplir ce champ"
+				placeholder="Description"
+				 style="margin-top:5px;margin-left:20px;margin-right:20px"
+				value="#{mBService.e.des}" ></p:inputText>
+        		
+        
+        
+        
+        					
+			<h:panelGrid columns="2">				<p:commandButton style="
+
+  
+width:100%  ; 
+
+
+    
+background-color: transparent;border-style:outset ;font-family: 
+    fantasy;font-size: 10px;font-weight:bold;"
+      action="#{mBService.ajout}"
+     value="VALIDER"
+     update="ajoutService"  >
+				</p:commandButton>
+						<p:commandButton style="width:100%;
+background-color: transparent;border-style:outset ; height: 40px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+ value="ANNULER" update="ajoutService" process="@this" >
+                <p:resetInput target="ajoutArticle" />
+            </p:commandButton>  
+            </h:panelGrid>  
+            
+       </h:panelGrid>
+		</h:form>
+	
+    </p:dialog>  
+    </h:form>
+    
+	
+	
+	
+	
+</center>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

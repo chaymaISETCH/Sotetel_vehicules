@@ -1,0 +1,153 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+.image{
+     background-image:url(car.jpg);
+     background-size:cover;
+      
+      
+    
+ }
+ 
+.out{
+ 
+   font-size: larger;
+        color: forestgreen;
+  
+ }
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  *************************************************************************************** -->
+<f:view>
+		<h:form id="ajoutV" style="margin: auto;
+    width: 100%;
+    margin-top: 5%;
+
+    padding: 10px;">
+
+			<h:panelGrid  cellpadding="10" style="background-color:rgba(255, 255,255,0.5); box-shadow:5px 5px rgba(0,0,0,0.5); border: 0.5px solid white;
+    border-radius: 20px 20px;">
+        <h:panelGrid  cellpadding="10" columns="4">
+			<p:inputText 
+				placeholder="Matricule" 
+				id="v1" required="true"
+				requiredMessage="veuillez remplir ce champ"
+				 style="margin-top:20px;margin-left:20px;margin-right:20px"
+				
+				value="#{uploadImageVehicule.vv.matricule}" ></p:inputText>
+				<p:message for="v1" display="text" closable="true"/>
+				<p:inputText 
+				requiredMessage="veuillez remplir ce champ"
+				placeholder="numéro de carte grise"
+				id="v2" required="true"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				value="#{uploadImageVehicule.vv.numCarteGrise}" ></p:inputText>
+        				<p:message for="v2" />
+        
+		<h:panelGrid columns="3" style="margin-top:10px;">	
+		 <p:outputLabel value="Couleur" style="margin-top:-10px;font-weight:bold;horizontal-align:center;vertical-align:center;color:white;padding:5px;font-size:20px;margin-left:10px;"></p:outputLabel>
+        <p:colorPicker value="#{uploadImageVehicule.vv.couleur}" required="true"
+				requiredMessage="veuillez remplir ce champ" id="v3" /> 
+
+</h:panelGrid>
+<p:message for="v3" display="text" />				
+        
+				<p:inputText requiredMessage="veuillez remplir ce champ"
+				placeholder="Modele"   id="v4" required="true" style="margin-top:20px;margin-left:20px;margin-right:20px"
+				value="#{uploadImageVehicule.vv.modele}"></p:inputText>
+        								<p:message for="v4" />
+        
+				<p:inputText requiredMessage="veuillez remplir ce champ"
+				placeholder="Marque" id="v5" required="true" style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{uploadImageVehicule.vv.marque}"></p:inputText>
+        								<p:message for="v5" />
+        
+				<p:inputText requiredMessage="veuillez remplir ce champ"
+				id="v6" required="true"
+				placeholder="Categorie"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{uploadImageVehicule.vv.categorie}" ></p:inputText>
+        								<p:message for="v6" />
+        	<p:inputText requiredMessage="veuillez remplir ce champ"
+				id="v7" required="true"
+				placeholder="Puissance"  style="margin-top:20px;margin-left:20px;margin-right:20px"
+				 value="#{uploadImageVehicule.vv.puissance}" ></p:inputText>
+				 								<p:message for="v7" />
+				<p:inputText requiredMessage="veuillez remplir ce champ"
+				id="v8" required="true"
+				placeholder="carburant"  style="margin-top:20px;margin-left:20px;margin-right:20px;margin-bottom:20px"
+				 value="#{uploadImageVehicule.vv.carburant}"></p:inputText>
+        								<p:message for="v8"  />
+        
+			
+				 
+        
+				
+    
+    			 							
+    			 								
+    
+        <p:calendar  requiredMessage="veuillez remplir ce champ"
+				id="v9" required="true"
+				  style="margin-top:50px;padding-top:50px;margin-bottom:20px;margin-left:20px;margin-right:20px"
+				 value="#{uploadImageVehicule.vv.dateAchat}" placeholder="date d'achat"  pattern="dd-MM-yyyy" mask="true" />
+ 	<p:message for="v9"  showDetail="true" />
+     					
+    	<h:panelGrid columns="3">	
+ 		 <p:outputLabel value="Image" style="font-size:20px;margin-top:-10px;horizontal-align:center;font-weight:bold;vertical-align:center;color:white;padding:5px;margin:5px;"></p:outputLabel>
+ 
+
+    		
+    		  <p:fileUpload  value="#{uploadImageVehicule.i2}"  fileUploadListener="#{uploadImageVehicule.file}"  enctype="multipart/form-data" mode="advanced" dragDropSupport="true"
+           update="messages2" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+ 
+    <p:growl id="messages2" for="msg"  showDetail="true" />
+    </h:panelGrid>
+   
+    </h:panelGrid>
+    			 <center> 							
+			<h:panelGrid columns="2" style="margin-left:250px;">	
+						<p:commandButton style="
+    margin-top: 10%;
+  margin-bottom:20px;
+width:100%  ; 
+
+   
+   
+background-color: transparent;height: 60px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+      action="#{uploadImageVehicule.ajout}"
+     value="VALIDER"
+     update="ajoutV"  >
+				</p:commandButton>
+						<p:commandButton style="
+    margin-top: 10%;
+  margin-bottom:20px;
+width:100%  ; 
+    margin-left: 15px;
+
+    margin-right: auto;
+    
+background-color: transparent;border-style:outset ; height: 60px;font-family: 
+    fantasy;font-size: 20px;font-weight:bold;"
+ value="ANNULER" update="ajoutV" process="@this" >
+                <p:resetInput target="ajoutV" />
+            </p:commandButton>  
+            </h:panelGrid>  
+    </center>
+     </h:panelGrid>
+		</h:form>
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>

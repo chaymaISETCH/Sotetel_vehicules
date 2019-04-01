@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="refresh" content="1000" />
+<style>
+
+
+</style>
+</h:head>
+<h:body class="image" >
+
+
+<!--  *************************************************************************************** -->
+
+  
+
+<f:view style="margin-top:20px">
+<center> <h:form id="f1">
+
+ 		<h:panelGrid columns="2">
+ 		
+ 		      <h:outputText value="Véhicule : " />
+ 		
+ 		
+ 		<p:selectOneMenu style="margin-left:8%" required="true" requiredMessage="veuillez remplir ce champ"
+			  id="menu1" value="#{mBExporter.mat}" >
+   <f:selectItems value="#{mBVehicule.lMat}" />
+   </p:selectOneMenu>
+   
+   	
+ 		      <h:outputText value="Date : " />
+ 		
+ 		
+ 		<p:selectOneMenu style="margin-left:8%" required="true" requiredMessage="veuillez remplir ce champ"
+			  id="menu1" value="#{mBExporter.mat}" >
+   <f:selectItems value="#{mBVehicule.lMat}" />
+   </p:selectOneMenu>
+   
+   
+   </h:panelGrid>
+   
+   
+   
+   
+   
+     
+        <p:dataTable id="tbl" var="car" value="#{mBVisiteV2.l}" 
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="10" style="margin-bottom:20px">
+
+        <f:facet name="{Exporters}">
+                    <h:commandLink>
+        
+                    <p:graphicImage value="bus.png" width="24"/>
+                <p:dataExporter type="pdf" target="tbl" fileName="cars"/>
+            </h:commandLink>
+          
+          </f:facet>
+          
+       
+           <p:column>
+            <f:facet name="header">
+              <h:outputText value="Numéro:" />
+            </f:facet>
+                    <h:outputText value="#{car.num}" style="font-weight: bold"/>
+        </p:column>
+                   
+ 
+        
+       
+
+  </p:dataTable>
+    
+    </h:form>
+	
+</center>
+
+</f:view>
+
+
+
+
+
+
+</h:body>
+</html>
